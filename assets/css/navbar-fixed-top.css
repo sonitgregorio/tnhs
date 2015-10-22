@@ -1,0 +1,32 @@
+body {
+    /*min-height: 2000px;*/
+    font-family: "Trebuchet MS", "Myriad Pro", Arial, sans-serif;
+}
+
+.navbar-static-top {
+    /*margin-bottom: -19px;*/
+}
+
+.navbar-default .navbar-brand{
+    color: darkslategrey;
+}
+
+.navbar-default .navbar-nav > .active > a{
+    color: #5ec0c6;
+    font-weight: bold;
+    background: none;
+}
+
+.navbar-default .navbar-nav{
+font-size: 12px;
+}
+
+.book_index{
+    padding: 20px;
+    border-radius: 5px;
+    background: #ffffff;
+    border: 1px solid lightgray;
+    margin-bottom: 15px;
+    position: relative;
+
+}
