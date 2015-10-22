@@ -47,4 +47,9 @@
 			$x = $this->db->query("SELECT id FROM tbl_party ORDER by id DESC LIMIT 1")->row_array();
 			return $x['id'];
 		}
+		function get_faculty()
+		{
+			return $this->db->query("SELECT a.idno, a.firstname, a.middlename, a.lastname, a.id, a.address, concat(b.year, '-', b.section) as section
+									 FROM tbl_party a, tbl_yearsection b WHERE a.usertype = 2")->result_array();
+		}
 	}

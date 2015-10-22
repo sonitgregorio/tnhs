@@ -43,7 +43,7 @@
 			$username = $this->input->post('username');	
 			$password = $this->input->post('password');
 			$cpassword = $this->input->post('cpassword');
-			$usertype = 3;
+			$usertype = $this->input->post('usertype');
 
 			//For ID number of the student
 			for ($i = strlen($lastinsert); $i < 5; $i++) { 

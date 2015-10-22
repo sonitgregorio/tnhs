@@ -13,13 +13,16 @@
          	
          	if (data > 0) 
          	{
-         		document.location = '/student'
+         		document.location = '/student';
          	}
          	else
          	{
          		 $('.reg_student').html(data);
          	}
          });
+
+
+       
 
 		});	
 
@@ -36,6 +39,30 @@
 		 		$('.reg_student').html(data);
 		 	});
 		 });
+
+
+
+			$('.face').click(function(){
+				x= $(this).data('param');
+				$.post("/faculty/select_data", {x}, function(data){
+					// alert(data);
+					$('.faculty_reg').html(data);
+				});
+			});
+
+
+			$('.fac_submits').submit(function(){
+				$.post("/faculty/insert_faculty", $(this).serialize(), function(data){
+					if (data > 0) {
+						document.location = '/faculty';
+					}else{
+						$('.faculty_reg').html(data);
+					}
+				});
+			})
+
+
+
 		});
 
 </script>
