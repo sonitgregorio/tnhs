@@ -49,7 +49,7 @@
 		}
 		function get_faculty()
 		{
-			return $this->db->query("SELECT a.idno, a.firstname, a.middlename, a.lastname, a.id, a.address, concat(b.year, '-', b.section) as section
-									 FROM tbl_party a, tbl_yearsection b WHERE a.usertype = 2")->result_array();
+			return $this->db->query("SELECT a.idno, a.firstname, a.middlename, a.lastname, a.id, a.address
+									 FROM tbl_party a WHERE a.usertype = 2")->result_array();
 		}
 	}

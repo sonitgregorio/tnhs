@@ -120,4 +120,11 @@
 			}
 
 		}
+		function delete_fac($id)
+		{
+			$this->session->set_flashdata('message', $this->successMessage() . 'Instructor Deleted</div>');
+			$this->db->where('id', $id);
+			$this->db->delete('tbl_party');
+			redirect('/faculty');
+		}
 	}

@@ -3,6 +3,8 @@
 	<div class="panel panel-default">
 		<div class="header_styles" style="padding:15px">
 			List of Student 
+            <div id="getting-started"></div>
+
 				 <div class="dropdown pull-right" >
                     <button id="dLabel" type="button" class="btn btn-info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:2px">
                         <span class="fa fa-cog"></span>
@@ -20,6 +22,7 @@
                 </div>
 		</div>
 		<div class="panel-body">
+        <?php echo $this->session->flashdata('message') ?>
 			<table class="table table-bordered table-striped">
 				<thead class="header_styles">
 					<th>Faculty ID</th>
@@ -38,7 +41,7 @@
                             data-param="<?php echo  $value['id'] ?>"
 
                             > <span class="fa fa-edit"></span></a>
-                            <a href="/delete_stud/<?php echo $value['id'] ?>" class="btn btn-danger btn-xs "  onclick="return confirm('Are You Sure?')"><span class="fa fa-trash-o"></span></a>
+                            <a href="/delete_fac/<?php echo $value['id'] ?>" class="btn btn-danger btn-xs "  onclick="return confirm('Are You Sure?')"><span class="fa fa-trash-o"></span></a>
                         </td>        
                     </tr>
                 <?php endforeach ?>
