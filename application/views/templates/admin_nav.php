@@ -83,7 +83,7 @@
     </ul>
     <ul class="nav nav-sidebar">
         <li><a href="subject.php"><span class="fa fa-user-secret"></span> Subject</a></li>
-        <li><a href="class.php"><span class="fa fa-cogs"></span> Year and Section</a></li>
+        <li><a href="/class"><span class="fa fa-cogs"></span> Year and Section</a></li>
 <!--        <li><a href=""><span class="fa fa-user-secret"></span> Shared Files</a></li>-->
     </ul>
 

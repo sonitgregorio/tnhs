@@ -67,4 +67,8 @@ $route['delete_stud/(:any)']    = 'student/delete_stud/$1;';
 //Faculty Routes
 $route['faculty']				= 'faculty/view_faculty';
 
+//Admin routes
+$route['class']				= 'admin/year_section';
+
+
 
