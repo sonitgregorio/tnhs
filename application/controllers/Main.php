@@ -8,7 +8,7 @@
 		function index()
 		{
 			$this->load->view('templates/header');
-			$this->load->view('templates/top');
+			// $this->load->view('templates/top');
 			$this->load->view('templates/navigation');
 			$this->load->view('index');
 			$this->load->view('templates/footer');

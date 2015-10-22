@@ -1,9 +1,8 @@
 <?php echo $this->session->flashdata('message') ?>
 <?php 
-    if($this->session->flashdata('data'))
+    if(!isset($firstname))
     {
-        extract($this->session->flashdata('data'));
-    }else{
+
         $firstname = '';
         $middlename = '';
         $lastname = '';
@@ -14,10 +13,13 @@
         $year_section = '';
         $username = ''; 
         $password = '';
+        $sid = '';
     }
 
  ?>
  <form class="form-horizontal form_submit" method="post" action="/insert_stud" onsubmit="return false">
+         <input type="hidden" value="3" name="usertype">
+        <input type="hidden" value="<?php echo $sid ?>" name="sid">
        	<div class="row">
             <div class="col-md-12">
             			<div class="form-group">
@@ -69,7 +71,7 @@
                    <div class="form-group">
 	                    <label class="col-sm-4 control-label" for="exampleInputEmail1">Address</label>
             			<div class="col-sm-8">
-	                    	<input name="address" type="text" class="form-control" required>
+	                    	<input name="address" type="text" class="form-control" value="<?php echo $address ?>" required>
             			</div>
             		</div>
 
@@ -85,7 +87,7 @@
             		</div>
 
                      <div class="panel panel-default">
-                        <div class="panel-heading"><span class="fa fa-lock"></span>User Access</div>
+                        <div class="header_styles" style="padding:5px"><span class="fa fa-lock"></span>User Access</div>
                         <div class="panel-body">
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">Username</label>

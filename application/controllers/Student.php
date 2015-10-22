@@ -26,7 +26,12 @@
 		}
 		function insert_stud()
 		{
+
+
 			$this->load->model('studentmd');
+			$lastinsert = $this->studentmd->get_last() + 1;
+			$l = $lastinsert;
+			$zero = '';
 			$firstname = $this->input->post('fname');
 			$mname = $this->input->post('mname');
 			$lname = $this->input->post('lname');
@@ -38,10 +43,14 @@
 			$username = $this->input->post('username');	
 			$password = $this->input->post('password');
 			$cpassword = $this->input->post('cpassword');
-			$usertype = 3;
-			$dates = date('Y');
+			$usertype = $this->input->post('usertype');
 
+			//For ID number of the student
+			for ($i = strlen($lastinsert); $i < 5; $i++) { 
+				$zero .= '0';
+			}
 
+			$dates = Date('Y') . "-" . $zero . $l;
 
 			$data = array('firstname' => $firstname, 
 						   'middlename' => $mname,
@@ -52,17 +61,17 @@
 						   'address' => $address,
 						   'year_section' => $year_section,
 						   'username' => $username,
-						   'password' => $password);
+						   'password' => $password,
+						   'sid' => '');
 
 			if($cpassword != $password){
-				$this->session->set_flashdata('data', $data);
 				$this->session->set_flashdata('message', $this->faildemessage() . 'Invalid Confirm Password</div>');
-				$this->load->view('student/register_student.php');
+				$this->load->view('student/register_student.php', $data);
 				$this->load->view('templates/footer');	
 			}
 			else
 			{
-			$party = array('firstname' => $firstname, 
+				$party = array('firstname' => $firstname, 
 						   'middlename' => $mname,
 						   'lastname' => $lname,
 						   'gender' => $gender,
@@ -73,15 +82,35 @@
 						   'usertype' => $usertype,
 						   'idno' => $dates);
 
-			$x = $this->studentmd->insert_student($party);
 
-			$user = array('username' => $username,
-						  'password' => $password,
-						  'party' => $x);
-			$this->studentmd->insert_users($user);
+				if ($this->input->post('sid') == '') 
+				{
+					$this->session->set_flashdata('message', $this->successMessage() . 'Student Added</div>');
 
-			echo $x;
-
+					$x = $this->studentmd->insert_student($party);
+					$user = array('username' => $username,
+								  'password' => $password,
+								  'party' => $x);
+					$this->studentmd->insert_users($user);
+					$xz = 1;
+				}
+				else
+				{
+					$party2 = array('firstname' => $firstname, 
+						   'middlename' => $mname,
+						   'lastname' => $lname,
+						   'gender' => $gender,
+						   'civil' => $civil,
+						   'dob' => $dbirth,
+						   'address' => $address,
+						   'year_section' => $year_section,
+						   'usertype' => $usertype);
+						 
+					$this->session->set_flashdata('message', $this->successMessage() . 'Student Updated</div>');
+					$this->studentmd->update_student($this->input->post('sid'), $party2);
+					$xz = 1;
+				}
+			echo $xz;
 			}
 
 		}
@@ -93,12 +122,12 @@
 			$this->studentmd->delete_stud($id);
 			redirect('/student');
 		}
-		function select_data($id)
+		function select_data()
 		{
 			$this->load->model('studentmd');
+			$id = $this->input->post('x');
 			$x = $this->studentmd->select_data($id);
-			print_r($x);
-			$this->session->set_flashdata('data', $x);
-			//$this->load->view('student/register_student');
+			$this->load->view('student/register_student', $x);
+			$this->load->view('templates/footer');	
 		}
 	}
