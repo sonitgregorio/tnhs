@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="../assets/images/tnhs_logo.jpg" class="pull-left navbar-brand-image">
+                <img src="../assets/images/tnhs_logo.jpg" style="border-radius:15px;box-shadow: 0px 0px 10px white" class="pull-left navbar-brand-image">
                 <span class="navbar-brand">TNHS <small style="font-size: 12px; font-weight: bold">Tanauan National High School Online Class</span>
             </div>
             <div id="navbar" class="navbar-collapse collapse">

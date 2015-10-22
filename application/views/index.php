@@ -3,7 +3,7 @@
     </div>
 
 
-    <div style="z-index: 1; margin-top: -350px" class="container">
+    <div style="z-index: 1; margin-top: -400px" class="container">
         <div class="book_index login_container_design">
             <div class="row" style="width: auto; padding: 15px">
                 <h3 class="form-signin-heading">
@@ -24,7 +24,7 @@
 
 
     <div class="container">
-        <div class="book_index"  style="position:static; margin-top: 110px">
+        <div class="book_index"  style="position:static; margin-top: 210px">
             <div class="row">
                 <div class="col-md-4">
                     <h4><b>Vision</b></h4>

@@ -1,10 +1,10 @@
 <div class="col-md-2"></div>
 <div class="col-md-10">
 	<div class="panel panel-default">
-		<div class="panel-heading" style="padding:15px">
+		<div class="header_styles" style="padding:15px">
 			List of Student 
 				 <div class="dropdown pull-right" >
-                    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button id="dLabel" type="button" class="btn btn-info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:2px">
                         <span class="fa fa-cog"></span>
                         Action
                         <span class="caret"></span>
@@ -21,7 +21,7 @@
 		</div>
 		<div class="panel-body">
 			<table class="table table-bordered table-striped">
-				<thead>
+				<thead class="header_styles">
 					<th>Faculty ID</th>
 					<th>Name of Faculty</th>
 					<th>Address</th>
@@ -38,7 +38,7 @@
 <div class="modal fade" id="add_student" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document" >
     <div class="modal-content"  style="border-radius:10px">
-      <div class="modal-header" style="background:#f5f5f5">
+      <div class="modal-header header_styles" >
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Add New Faculty</h4>
       </div>
@@ -108,7 +108,7 @@
             			</div>
             		</div> -->
                     <div class="panel panel-default">
-                        <div class="panel-heading"><span class="fa fa-lock"></span>User Access</div>
+                        <div class="header_styles" style="padding:5px"><span class="fa fa-lock"></span>User Access</div>
                         <div class="panel-body">
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">Username</label>
