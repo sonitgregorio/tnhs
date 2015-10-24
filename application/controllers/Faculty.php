@@ -18,7 +18,7 @@
 			$data['param'] = 'faculty';
 			$this->load->model('studentmd');
 			$this->load->view('templates/header');
-			$this->load->view('templates/top');
+			// $this->load->view('templates/top');
 			$this->load->view('templates/admin_nav', $data);
 			$this->load->view('faculty/view_faculty');
 			$this->load->view('templates/footer');

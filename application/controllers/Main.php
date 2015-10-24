@@ -19,7 +19,7 @@
 			// $password = $this->input->post('password');
 			$data['param'] = 'home';
 			$this->load->view('templates/header');
-			$this->load->view('templates/top');
+			// $this->load->view('templates/top');
 			$this->load->view('templates/admin_nav', $data);
 			$this->load->view('pages/home');
 			$this->load->view('templates/footer');

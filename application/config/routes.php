@@ -69,3 +69,15 @@ $route['faculty']				= 'faculty/view_faculty';
 $route['class']					= 'admin/year_section';
 $route['delete_fac/(:any)']		= 'faculty/delete_fac/$1';
 
+//Admin Routes
+
+//class
+$route['insert_class']			= 'admin/insert_class';
+$route['delete_class/(:any)']	= 'admin/delete_class/$1';
+
+//subject
+$route['subject']					= 'admin/subject';
+$route['insert_subject']		= 'admin/insert_subject';
+$route['delete_subject/(:any)']	= 'admin/delete_subject/$1';
+$route['edit_subject/(:any)']	= 'admin/edit_subject/$1';
+

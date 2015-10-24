@@ -1,12 +1,12 @@
+<br />
 <div class="col-md-2"></div>
 <div class="col-md-10">
 	<div class="panel panel-default">
 		<div class="header_styles" style="padding:15px">
 			List of Student 
-            <div id="getting-started"></div>
 
 				 <div class="dropdown pull-right" >
-                    <button id="dLabel" type="button" class="btn btn-info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:2px">
+                    <button id="dLabel" type="button" class="btn btn-info btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:2px">
                         <span class="fa fa-cog"></span>
                         Action
                         <span class="caret"></span>
