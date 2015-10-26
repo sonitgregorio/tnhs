@@ -1,7 +1,7 @@
 <script src="../assets/js/jquery.min.js"></script>
 <!-- <script src="../assets/js/moment.min.js"></script> -->
 <script src="../assets/js/bootstrap.min.js"></script>
-<!-- <script src="../assets/js/bootstrap-datepicker.js"></script> -->
+<script src="../assets/js/jquery.dataTables.min.js"></script>
 <!-- <script src="../assets/js/user.js"></script> -->
 
 <script type="text/javascript">
@@ -19,10 +19,7 @@
          	{
          		 $('.reg_student').html(data);
          	}
-         });
-
-
-       
+         });   
 
 		});	
 
@@ -40,7 +37,11 @@
 		 	});
 		 });
 
-
+			$('#mods').click(function(){
+				x = $(this).data('param');
+				$('input[name=classid]').val(x);
+				$('#addstudent').modal('show')
+			});
 
 			$('.face').click(function(){
 				x= $(this).data('param');
@@ -61,8 +62,18 @@
 				});
 			})
 
+			$('#example').DataTable();
 
 
+			var table = $('#example').DataTable();
+ 
+			// #column3_search is a <input type="text"> element
+			$('#column3_search').on( 'keyup', function () {
+			    table
+			        .columns( 1 )
+			        .search( this.value )
+			        .draw();
+			} );
 		});
 
 </script>

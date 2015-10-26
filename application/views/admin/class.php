@@ -1,7 +1,7 @@
 <div class="col-md-2"></div>
 <div class="col-md-10">
 	<div class="panel panel-default">
-		<div class="panel-heading" style="padding:15px">
+		<div class="header_styles" style="padding:15px">
 			Year And Section
 	
 		</div>
@@ -12,19 +12,23 @@
 if (!isset($id)) {
       $year = '';
         $section = '';
-        echo "alalala";
 } else {
-   echo "bulaga";
 }
 
 
 
  ?>
 
-<form class="form-horizontal" method="post" action="/insert_class">
-                       <div class="form-group">
-                        <label class="col-sm-1 control-label" for="exampleInputEmail1">Year Level</label>
-                        <div class="col-sm-4">
+
+       
+
+
+		<div class="panel-body">
+            <div class="col-md-12 ">
+                <form class="form-horizontal" method="post" action="/insert_class">
+                       <div class="form-group col-md-5" style="padding:0px">
+                        <label class="col-sm-3 control-label" for="exampleInputEmail1">Year Level</label>
+                        <div class="col-sm-9">
                             <select name="year" class="form-control">
                                 <option <?php echo $year == 'First Year' ? 'selected' : '' ?>>First Year</option>
                                 <option <?php echo $year == 'Second Year' ? 'selected' : '' ?>>Second Year</option>
@@ -33,20 +37,24 @@ if (!isset($id)) {
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-1 control-label" for="exampleInputEmail1">Section</label>
-                        <div class="col-sm-4">
-                             <input value  ="<?php echo $section ?>"name="section" type="text" class="form-control" required>
+                    <div class="form-group col-md-4" style="padding:0px">
+                        <label class="col-sm-3 control-label" for="exampleInputEmail1">Section</label>
+                        <div class="col-sm-9">
+                             <input value  ="<?php echo $section ?>"name="section" type="text" class="form-control" required style="padding:0px">
                         </div>
-        <button type="Submit" class="btn btn-primary">Save changes</button>
                     </div>
 
-       
+                    <div class="col-md-3">
+                     <button type="Submit" class="btn btn-primary">Save</button>
+
+                    </div>
+            </form>
 
 
-		<div class="panel-body">
+            </div>
+            
 			<table class="table table-bordered table-striped">
-				<thead>
+				<thead class="header_styles">
 					<th>Year Level</th>
 					<th>Section</th>
 					<th>Action</th>

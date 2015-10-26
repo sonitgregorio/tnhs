@@ -10,6 +10,7 @@
 
     <title>TNHS Online Class</title>
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../assets/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="../assets/css/navbar-fixed-top.css" rel="stylesheet">
     <link href="../assets/css/font-awesome.css" rel="stylesheet">
     <link href="../assets/css/datepicker.css" rel="stylesheet">

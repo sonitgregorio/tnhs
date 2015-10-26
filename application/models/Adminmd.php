@@ -41,5 +41,14 @@
 			 $this->db->where('id', $id);
       		$x = $this->db->get('tbl_subject')->row_array();
 		}
+		function get_sch_year()
+		{
+			return $this->db->get('tbl_year')->result_array();
+		}
+		function insert_sch($data)
+		{
+			$this->db->insert('tbl_year', $data);
+		}
+
 
 	}

@@ -73,4 +73,22 @@
           $this->session->set_flashdata('data', $sid);
           redirect('/subject');
        }
+       function sch_yr()
+       {
+       		$data['param'] = 'year';
+			
+			$this->load->model('adminmd');
+			$this->load->view('templates/header');
+			// $this->load->view('templates/top');
+			$this->load->view('templates/admin_nav',$data);
+			$this->load->view('admin/sch_yr');
+			$this->load->view('templates/footer');
+       }
+       function insert_sch()
+       {	
+       		$this->load->model('adminmd');
+       		$data = array('sch_yr' => $this->input->post('sch'));
+       		$this->adminmd->insert_sch($data);
+       		redirect('/sch_yr');
+       }
 	}

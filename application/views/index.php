@@ -3,12 +3,16 @@
    
 
         <div class="container">
+
                 <div class="book_index login_container_design">
                     <div class="row" style="width: auto; padding: 15px">
                         <h3 class="form-signin-heading">
                             <span class="fa fa-lock"></span>
                             Sign In
                         </h3>
+                        <?php 
+                        echo $this->session->flashdata('loginerror'); ?>
+                        
                         <form action="/login" method="post">
                             <label for="inputEmail" class="sr-only">Username</label>
                             <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Student ID" required autofocus>

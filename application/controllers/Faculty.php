@@ -127,4 +127,68 @@
 			$this->db->delete('tbl_party');
 			redirect('/faculty');
 		}
+		function myclass()
+		{
+			$this->load->model('facultymd');
+			$data['param'] = 'myclass';
+			$this->load->view('templates/header');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('faculty/class_faculty');
+			$this->load->view('templates/footer');
+		}
+		function addclass()
+		{
+			$this->load->model('facultymd');
+			$section = $this->input->post('InsSec');
+			$newclass = array('uid' => $this->session->userdata('uid'), 
+						   'schoolyear' => $this->input->post('InsSY'),
+						   'section' => $this->input->post('InsSec'),
+						   'subject' => $this->input->post('InsSub'));
+			$x = $this->facultymd->addclass($newclass);
+
+			foreach ($this->facultymd->get_all_student($section) as $key => $value) {
+				$data = array('classid' => $x, 'partyid' => $value['id']);
+				$this->facultymd->insert_stud_class($data);
+			}
+			redirect('/faculty_class');
+		}
+		function delete_classes($id)
+		{
+			$this->db->where('id', $id);
+			$this->db->delete('tbl_classes');
+			redirect('/faculty_class');
+		}
+		function view_student($id)
+		{
+			$this->load->model('facultymd');
+			$data['param'] = 'myclass';
+			$dats['subid'] = $id;
+			$this->load->view('templates/header');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('student/student_list', $dats);
+			$this->load->view('templates/footer');
+		}
+		function insert_students()
+		{
+			$data = array('classid' => $this->input->post('classid'),
+						  'partyid' =>$this->input->post('stud_id'));
+			$this->db->insert('tbl_student', $data);
+
+			redirect('view_stud/'.$this->input->post('classid'));
+		}
+		function delet_stud_class($id, $classid)
+		{
+			$this->db->where('id', $id);
+			$this->db->delete('tbl_student');
+			redirect('/view_stud/'.$classid);
+		}
+		function examination()
+		{
+			$this->load->model('facultymd');
+			$data['param'] = 'exam';
+			$this->load->view('templates/header');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('faculty/examination');
+			$this->load->view('templates/footer');
+		}
 	}

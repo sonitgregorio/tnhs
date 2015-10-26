@@ -60,24 +60,34 @@ $route['login'] 				= 'main/verify';
 
 
 //Student Routes
-$route['student']				= 'student/view_student';
-$route['insert_stud']			= 'student/insert_stud';
-$route['delete_stud/(:any)']    = 'student/delete_stud/$1;';
+$route['student']						= 'student/view_student';
+$route['insert_stud']					= 'student/insert_stud';
+$route['delete_stud/(:any)']    		= 'student/delete_stud/$1;';
 
 //Faculty Routes
-$route['faculty']				= 'faculty/view_faculty';
-$route['class']					= 'admin/year_section';
-$route['delete_fac/(:any)']		= 'faculty/delete_fac/$1';
+$route['faculty']						= 'faculty/view_faculty';
+$route['class']							= 'admin/year_section';
+$route['delete_fac/(:any)']				= 'faculty/delete_fac/$1';
+$route['faculty_class']					= 'faculty/myclass';
+$route['addclass']						= 'faculty/addclass';
+$route['view_stud/(:any)']				= 'faculty/view_student/$1';
+$route['insert_studentsss']				= 'faculty/insert_students';
+$route['delet_stud_class/(:any)/(:any)']= 'faculty/delet_stud_class/$1/$2';
+
+//Examination Routes
+$route['examination']					= 'faculty/examination';
 
 //Admin Routes
 
 //class
-$route['insert_class']			= 'admin/insert_class';
-$route['delete_class/(:any)']	= 'admin/delete_class/$1';
+$route['insert_class']					= 'admin/insert_class';
+$route['delete_class/(:any)']			= 'admin/delete_class/$1';
+$route['delete_classes/(:any)']			= 'faculty/delete_classes/$1';
+$route['sch_yr']						= 'admin/sch_yr';
+$route['insert_sch']					= 'admin/insert_sch';
 
 //subject
-$route['subject']					= 'admin/subject';
-$route['insert_subject']		= 'admin/insert_subject';
-$route['delete_subject/(:any)']	= 'admin/delete_subject/$1';
-$route['edit_subject/(:any)']	= 'admin/edit_subject/$1';
-
+$route['subject']						= 'admin/subject';
+$route['insert_subject']				= 'admin/insert_subject';
+$route['delete_subject/(:any)']			= 'admin/delete_subject/$1';
+$route['edit_subject/(:any)']			= 'admin/edit_subject/$1';
