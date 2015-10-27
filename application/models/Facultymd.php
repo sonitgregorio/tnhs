@@ -74,10 +74,56 @@
 			return $this->db->query("SELECT *, tbl_party.id as studid FROM `tbl_party`, tbl_yearsection WHERE tbl_party.id not in(SELECT partyid from tbl_student WHERE classid = $id) 
 									 AND usertype = 3  AND tbl_yearsection.id = tbl_party.year_section")->result_array();
 		}
-		function get_sub_byid()
+		function get_sub_byid($id)
 		{
 			$uid = $this->session->userdata('uid');
 			return $this->db->query("SELECT tbl_subject.id, tbl_subject.subject_title 
-									 FROM tbl_classes, tbl_subject WHERE uid = $uid AND subject = tbl_subject.id")->result_array();
+									 FROM tbl_classes, tbl_subject WHERE uid = $uid 
+									 AND subject = tbl_subject.id AND tbl_classes.section = '$id' 
+									 GROUP by tbl_subject.id")->result_array();
 		}
-	}
+		function get_classes_byid()
+		{
+			$uid = $this->session->userdata('uid');
+			return $this->db->query("SELECT a.section, concat(b.year, '-', b.section) sec, a.subject, a.section 
+									 FROM tbl_classes a, tbl_yearsection b 
+									 WHERE a.section = b.id AND uid = $uid GROUP by a.section")->result_array();
+
+		}
+		function get_classid($section, $subject)
+		{
+			$uid = $this->session->userdata('uid');
+			$x = $this->db->query("SELECT id FROM tbl_classes WHERE section = '$section' AND subject = '$subject' AND uid = '$uid'")->row_array();
+			return $x['id'];
+		}
+		function insert_ex($data)
+		{
+			$this->db->insert('tbl_exam', $data);
+		}
+		function get_quizes()
+		{
+			$uid = $this->session->userdata('uid');
+			return $this->db->query("SELECT a.status, a.id, a.description, concat(c.year, '-', c.section) as sec, d.subject_title 
+									 FROM tbl_exam a, tbl_classes b, tbl_yearsection c, tbl_subject d 
+									 WHERE b.id = a.classid 
+									 AND b.section = c.id 
+									 AND b.subject = d.id
+									 AND a.uid='$uid'")->result_array();
+		}
+		function insert_quest($data)
+		{
+			$this->db->insert('tbl_question', $data);
+			return $this->db->insert_id();
+		}
+		function insert_all($choices, $answer)
+		{
+			$this->db->insert('tbl_choices', $choices);
+			$this->db->insert('tbl_answers', $answer);
+		}
+		function get_all_question($id)
+		{
+			return $this->db->query("SELECT tbl_question.*, tbl_answers.answer 
+									 FROM tbl_question, tbl_answers WHERE examid = $id 
+									 AND tbl_answers.quest_id = tbl_question.id")->result_array();
+		}
+	} 

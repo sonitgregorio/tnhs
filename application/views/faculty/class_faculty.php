@@ -4,22 +4,6 @@
     <div class="panel panel-default">
         <div class="header_styles" style="padding:15px">
             List of Student 
-
-                 <!-- <div class="dropdown pull-right" >
-                    <button id="dLabel" type="button" class="btn btn-info btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:2px">
-                        <span class="fa fa-cog"></span>
-                        Action
-                        <span class="caret"></span>
-                    </button>
-
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                        <li><a href="#student_create" data-toggle="modal" class="face" data-target="#faculty" data-param='0'>
-                                <span class="fa fa-plus-circle"></span>
-                                New Faculty
-                            </a>
-                        </li>
-                    </ul>
-                </div> -->
         </div>
         <div class="panel-body">
                 <form class="form-horizontal" action="/addclass" method="POST">

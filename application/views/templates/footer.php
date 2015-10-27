@@ -65,15 +65,21 @@
 			$('#example').DataTable();
 
 
-			var table = $('#example').DataTable();
- 
-			// #column3_search is a <input type="text"> element
-			$('#column3_search').on( 'keyup', function () {
-			    table
-			        .columns( 1 )
-			        .search( this.value )
-			        .draw();
-			} );
+			$('#section').change(function(){
+				x = $('#section').val();
+				$.post("/faculty/get_sub_byid", {x}, function(data){
+					$('#select_this').html(data);
+
+				});
+			});
+
+
+			$('.ac_exam').click(function(){
+				x = $(this).data('param');
+				$('input[name=examid]').val(x);
+				$('#exams').modal('show');
+			});
+			
 		});
 
 </script>

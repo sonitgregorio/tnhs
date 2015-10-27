@@ -76,7 +76,11 @@ $route['delet_stud_class/(:any)/(:any)']= 'faculty/delet_stud_class/$1/$2';
 
 //Examination Routes
 $route['examination']					= 'faculty/examination';
-
+$route['insert_exam']					= 'faculty/insert_exam';
+$route['add_question/(:num)']			= 'faculty/add_question/$1';
+$route['insert_question']				= 'faculty/insert_question';
+$route['delete_questions/(:any)/(:any)']= 'faculty/delete_questions/$1/$2';
+$route['activate_exams']				= 'faculty/activate_exams';
 //Admin Routes
 
 //class

@@ -191,4 +191,82 @@
 			$this->load->view('faculty/examination');
 			$this->load->view('templates/footer');
 		}
+		function get_sub_byid()
+		{
+			$id = $this->input->post('x');
+			$this->load->model('facultymd');
+			$x = $this->facultymd->get_sub_byid($id);
+			
+			foreach ($x as $key => $value) {
+				echo "<option value=" . $value['id'] . ">".$value['subject_title']."</option>";
+			}
+		}
+		function insert_exam()
+		{
+			$this->load->model('facultymd');
+			$classid = $this->facultymd->get_classid($this->input->post('section'), $this->input->post('subject'));
+
+			$data = array('classid' => $classid,
+						  'description' => $this->input->post('description'),
+						  'uid' => $this->session->userdata('uid'));
+
+			$this->facultymd->insert_ex($data);
+			$this->session->set_flashdata('message', $this->successMessage() . 'Quiz/Exam Added.</div>');
+			redirect('/examination');
+		}
+		function add_question($id)
+		{
+			$this->load->model('facultymd');
+			$data['param'] = 'exam';
+			$data['examid'] = $id;
+			$this->load->view('templates/header');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('faculty/add_question', $data);
+			$this->load->view('templates/footer');
+		}
+		function insert_question()
+		{
+
+			$this->load->model('facultymd');
+
+			$question = array('question' => $this->input->post('quest'),
+							  'examid' => $this->input->post('examid'),
+							  'points' => $this->input->post('points'));
+
+			$qid = $this->facultymd->insert_quest($question);
+
+			$choices = array('choice1' => $this->input->post('c1'),
+							 'choice2' => $this->input->post('c2'),
+							 'choice3' => $this->input->post('c3'),
+							 'quest_id' => $qid);
+
+
+			$answer = array('answer' => $this->input->post('answer'),
+							'quest_id' => $qid);
+
+
+
+			$this->facultymd->insert_all($choices, $answer);
+			$this->session->set_flashdata('message', $this->successMessage() . 'Question Added</div>');
+			redirect('/add_question/'.$this->input->post('examid'));
+		}
+		function delete_questions($id, $examid)
+		{
+			$this->db->where('id', $id);
+			$this->db->delete('tbl_question');
+			$this->db->where('quest_id', $id);
+			$this->db->delete('tbl_choices');
+			$this->db->where('quest_id', $id);
+			$this->db->delete('tbl_answers');
+				redirect('/add_question/'.$examid);
+		}
+		function activate_exams()
+		{
+			$data = array('time_duration' => $this->input->post('duration'),
+						  'status' => 1);
+
+			$this->db->where('id', $this->input->post('examid'));
+			$this->db->update('tbl_exam', $data);
+			redirect('/examination');
+		}
 	}
