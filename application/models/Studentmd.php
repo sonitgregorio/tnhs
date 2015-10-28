@@ -63,5 +63,13 @@
 		function checked($id)
 		{
 			return $this->db->query("SELECT sum(points) FROM tbl_sa,tbl_answers,tbl_question WHERE tbl_sa.answer=tbl_answers.answer AND tbl_sa.partyid='$id'  AND tbl_question.id=tbl_sa.quest_id AND tbl_question.examid='$id1'")->result_array();
+		function get_myclass() 
+		{
+			$uid = $this->session->userdata('uid');
+			return $this->db->query("SELECT b.id, concat(c.firstname, ' ', c.middlename) instructor, d.subject_title  FROM tbl_student a, tbl_classes b, tbl_party c, tbl_subject d WHERE a.classid = b.id AND a.partyid = $uid AND b.uid = c.id AND d.id = b.subject")->result_array();
+		}
+		function get_my_lessons($id)
+		{
+			return $this->db->query("SELECT b.* FROM tbl_classes a, tbl_lessons b WHERE a.id = $id AND a.uid = b.uid AND a.subject = b.subjectid")->result_array();
 		}
 	}

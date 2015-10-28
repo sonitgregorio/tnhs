@@ -32,13 +32,13 @@
 
                             ?></td>
                              <td>
-                                <a href="#"data-toggle="modal" data-target="#add_student"  class="btn btn-info btn-xs mod" 
+<!--                                 <a href="#"data-toggle="modal" data-target="#add_student"  class="btn btn-info btn-xs mod" 
                                 data-param="<?php echo  $value['id'] ?>"
 
                                 > <span class="fa fa-edit"></span></a>
                                 <a href="/delete_stud/<?php echo $value['id'] ?>" class="btn btn-danger btn-xs "  onclick="return confirm('Are You Sure?')"><span class="fa fa-trash-o"></span></a>
-                            
-                                 <a href="/take_exam/<?php echo $value['id'] ?>"   onclick="return confirm('Are You Sure?')">TAKE Exam</a>
+                             -->
+                                 <a href="/take_exam/<?php echo $value['id'] ?>"  class="btn btn-primary btn-xs" onclick="return confirm('Are You Sure?')">Take Exam</a>
                             
                             </td>        
                         </tr>
