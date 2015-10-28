@@ -107,5 +107,15 @@
             <li><a href="school_year.php"><span class="fa fa-cogs"></span> School Year</a></li>
         </ul> -->
     <?php endif ?>
+
+    <?php if ($this->session->userdata('usertype') == 3): ?>
+        <ul class="nav nav-sidebar">
+            <li class="<?php echo $param == 'home' ? 'active' : '' ?>"><a href="/">
+                <span class="fa fa-users"></span>Dashboard</a>
+            </li>
+            <li class="<?php echo $param == 'myclass' ? 'active' : '' ?>"><a href="/student_class"><span class="fa fa-thumbs-up"></span> My Class</a></li>
+            <li class="<?php echo $param == 'student_examination' ? 'active' : '' ?>"><a href="/student_examination"><span class="fa fa-outdent"></span> Examinations</a></li>
+        </ul>
+    <?php endif ?>
    
 </div>

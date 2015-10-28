@@ -269,4 +269,26 @@
 			$this->db->update('tbl_exam', $data);
 			redirect('/examination');
 		}
+		function insert_insert_answers()
+		{
+			$answer = $this->input->post('ans');
+			$qid = $this->input->post('qid');
+			$uid = $this->session->userdata('uid');
+			echo $answer . "|" . $qid;
+			$data = array('quest_id' => $qid,
+						  'answer' => $answer,
+						  'partyid' => $uid);
+
+			$this->db->where('quest_id', $qid);
+			$this->db->where('partyid', $uid);
+			$x = $this->db->get('tbl_sa')->num_rows();
+			if($x > 0){
+				$this->db->where('quest_id', $qid);
+				$this->db->where('partyid', $uid);
+				$this->db->update('tbl_sa', $data);
+			}else{
+				$this->db->insert('tbl_sa', $data);
+			}
+			
+		}
 	}

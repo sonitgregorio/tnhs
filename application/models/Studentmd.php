@@ -52,4 +52,12 @@
 			return $this->db->query("SELECT a.idno, a.firstname, a.middlename, a.lastname, a.id, a.address
 									 FROM tbl_party a WHERE a.usertype = 2")->result_array();
 		}
+		function get_kung_mayada_exam($id)
+		{
+			return $this->db->query("SELECT a.id,a.status,a.description,d.subject_title, concat(f.year, '-', f.section) sec FROM tbl_exam a, tbl_classes b,tbl_student c, tbl_subject d, tbl_party e, tbl_yearsection f WHERE a.classid =b.id AND c.classid=b.id AND b.subject =d.id AND e.year_section =f.id AND c.partyid= e.id AND e.id='$id'")->result_array();
+		}
+		function get_take_exam($id)
+		{
+			return $this->db->query("SELECT tbl_question.id,tbl_question.question,tbl_answers.answer,tbl_choices.choice1,tbl_choices.choice2,tbl_choices.choice3 FROM tbl_exam,tbl_question,tbl_choices,tbl_answers WHERE tbl_exam.id=tbl_question.examid AND tbl_choices.quest_id=tbl_question.id AND tbl_question.id=tbl_answers.quest_id AND tbl_exam.id=$id")->result_array();
+		}
 	}
