@@ -75,6 +75,20 @@
 				$('#exams').modal('show');
 			});
 			
+		
+			$('.checked1').click(function(){
+				ans = $(this).data('param');
+				qid = $(this).data('param1');
+				// x=$('input[name=che]:checked').val(); 
+				// alert(ans +"|"+ qid);
+
+				$.post("/faculty/insert_insert_answers", {ans, qid}, function(data){
+						// alert(data);
+				});
+			});
+		
+			
+
 		});
 
 </script>

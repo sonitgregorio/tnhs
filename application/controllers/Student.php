@@ -130,4 +130,26 @@
 			$this->load->view('student/register_student', $x);
 			$this->load->view('templates/footer');	
 		}
+		function student_examination()
+		{
+			$data['param'] = 'student_examination';
+			$this->load->model('studentmd');
+			$this->load->view('templates/header');
+			$this->load->view('templates/top');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('student/student_examination');
+			$this->load->view('templates/footer');
+		}
+		function take_exam($id)
+		{
+
+			$data1['qid']=$id;
+			$data['param'] = 'student_examination';
+			$this->load->model('studentmd');
+			$this->load->view('templates/header');
+			$this->load->view('templates/top');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('student/take_exam',$data1);
+			$this->load->view('templates/footer');
+		}
 	}

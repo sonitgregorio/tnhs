@@ -95,3 +95,10 @@ $route['subject']						= 'admin/subject';
 $route['insert_subject']				= 'admin/insert_subject';
 $route['delete_subject/(:any)']			= 'admin/delete_subject/$1';
 $route['edit_subject/(:any)']			= 'admin/edit_subject/$1';
+
+
+//Student
+$route['student_examination']			= 'student/student_examination';
+$route['take_exam/(:any)']				= 'student/take_exam/$1';
+$route['examination_checking/(:any)/(:any)']				= 'student/take_exam/$1/$2';
+
