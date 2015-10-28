@@ -87,9 +87,22 @@
 				});
 			});
 		
+
+			$('.view_vid').click(function(){
+				x = $(this).data('param');
+	
+				$path = '../assets/lessons/'+x;
+				// alert($path);
+				$('#vids').attr('src', $path);
+				$('#view_videos').modal('show');
+			});
 			
 
 		});
+
+
+
+
 
 </script>
 

@@ -16,11 +16,17 @@
 
 		function index()
 		{
+			if ($this->session->userdata('uid') != "" OR $this->session->userdata('uid') != 0) {
+				$this->redirectpage();
+			} else {
+			
 			$this->load->view('templates/header');
 			// $this->load->view('templates/top');
 			$this->load->view('templates/navigation');
 			$this->load->view('index');
 			$this->load->view('templates/footer');
+			
+			}
 		}
 		function verify()
 		{
@@ -34,16 +40,24 @@
 			} else {
 				$this->session->set_userdata('usertype',$x['usertype']);
 				$this->session->set_userdata('uid',$x['uid']);
-				$data['param'] = 'home';
-				$this->load->view('templates/header');
-				// $this->load->view('templates/top');
-				$this->load->view('templates/admin_nav', $data);
-				$this->load->view('pages/home');
-				$this->load->view('templates/footer');
-			}		
-
-
-			
+				$this->redirectpage();
+			}					
+		}
+		function logout()
+		{
+			$this->session->unset_userdata('uid');
+			$this->index();
 		}
 		
+		function redirectpage()
+		{
+				
+					$data['param'] = 'home';
+					$this->load->view('templates/header');
+					$this->load->view('templates/admin_nav', $data);
+					$this->load->view('pages/home');
+					$this->load->view('templates/footer');
+				
+				
+		}
 	}

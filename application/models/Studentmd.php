@@ -60,4 +60,13 @@
 		{
 			return $this->db->query("SELECT tbl_question.id,tbl_question.question,tbl_answers.answer,tbl_choices.choice1,tbl_choices.choice2,tbl_choices.choice3 FROM tbl_exam,tbl_question,tbl_choices,tbl_answers WHERE tbl_exam.id=tbl_question.examid AND tbl_choices.quest_id=tbl_question.id AND tbl_question.id=tbl_answers.quest_id AND tbl_exam.id=$id")->result_array();
 		}
+		function get_myclass() 
+		{
+			$uid = $this->session->userdata('uid');
+			return $this->db->query("SELECT b.id, concat(c.firstname, ' ', c.middlename) instructor, d.subject_title  FROM tbl_student a, tbl_classes b, tbl_party c, tbl_subject d WHERE a.classid = b.id AND a.partyid = $uid AND b.uid = c.id AND d.id = b.subject")->result_array();
+		}
+		function get_my_lessons($id)
+		{
+			return $this->db->query("SELECT b.* FROM tbl_classes a, tbl_lessons b WHERE a.id = $id AND a.uid = b.uid AND a.subject = b.subjectid")->result_array();
+		}
 	}

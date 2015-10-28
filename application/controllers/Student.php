@@ -152,4 +152,36 @@
 			$this->load->view('student/take_exam',$data1);
 			$this->load->view('templates/footer');
 		}
+		function student_class()
+		{
+			$data['param'] = 'myclass';
+			$this->load->model('studentmd');
+			$this->load->view('templates/header');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('student/student_class');
+			$this->load->view('templates/footer');
+		}
+		function view_lessons($id)
+		{
+			$data['param'] = 'myclass';
+			$data1['classid'] = $id;
+			$this->load->model('studentmd');
+			$this->load->view('templates/header');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('student/student_lessons', $data1);	
+			$this->load->view('templates/footer');
+		}
+		function view_pdf($filenamess)
+		{
+			$file = './assets/lessons/'.$filenamess;
+			$filename = $filenamess; /* Note: Always use .pdf at the end. */
+
+			header('Content-type: application/pdf');
+			header('Content-Disposition: inline; filename="' . $filename . '"');
+			header('Content-Transfer-Encoding: binary');
+			header('Content-Length: ' . filesize($file));
+			header('Accept-Ranges: bytes');
+
+			@readfile($file);
+		}
 	}
