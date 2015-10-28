@@ -152,4 +152,18 @@
 			$this->load->view('student/take_exam',$data1);
 			$this->load->view('templates/footer');
 		}
+		function submit_score($id,$id1)
+		{
+			$this->studentmd->checked($id,$id1);
+		}
+		function my_score($id,$id1)
+		{
+			$data['param'] = 'student_examination';
+			$this->load->model('studentmd');
+			$this->load->view('templates/header');
+			$this->load->view('templates/top');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('student/take_exam',$data1);
+			$this->load->view('templates/footer');
+		}
 	}

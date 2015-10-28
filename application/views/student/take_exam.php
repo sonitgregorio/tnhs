@@ -4,8 +4,8 @@
 		<div class=" header_styles" style="padding:15px" >
 			Examination      
 			<?php 
-			echo $qid;
-			echo $rand=rand(0,3);
+			 $qid;
+			 $rand=rand(0,3);
 			 ?>      	
 		</div>
 		<div class="panel-body">
@@ -90,8 +90,10 @@
 			 <?php endforeach ?>
 
 				<div class="col-md-12"  style"margin-top:30px">
-			 	 <input class="btn btn-primary pull-right" type="submit" />
-				</div>
+					<form method="post" action="/checked_ans/"<?php $qid ?>>
+						 <input class="btn btn-primary pull-right" type="submit" />
+					</form>
+			 		</div>
 		      </form>
 	</div>
 </div>

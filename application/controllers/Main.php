@@ -34,6 +34,7 @@
 			} else {
 				$this->session->set_userdata('usertype',$x['usertype']);
 				$this->session->set_userdata('uid',$x['uid']);
+				$this->session->set_userdata('ngaran',$x['firstname']/*." ". $x['middlename'] ." ".$x['lastname']*/ );
 				$data['param'] = 'home';
 				$this->load->view('templates/header');
 				// $this->load->view('templates/top');

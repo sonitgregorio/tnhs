@@ -36,7 +36,7 @@
                                     Profile
                                 </a>
                             </li>
-                            <li><a href="logout.php">
+                            <li><a href="/">
                                     <span class="fa fa-sign-out"></span>
                                     Logout
                                 </a>
@@ -62,11 +62,31 @@
 
         </a>
         <div>
-            <p>Hi! <?php  ?>
+            <p>Hi                <br>
+
+                <?php
+
+
+                    if ($this->session->userdata('usertype') == 1) {
+                       echo "Admin";
+                    } else {
+                       echo    $this->session->userdata('ngaran') ;
+                    }
+                    
+
+                
+
+
+
+                 ?>
+
+
+
                 <br>
                 <small>
                 </small>
-            </p>
+           
+ </p>
         </div>
 
     </div>
@@ -77,9 +97,9 @@
 
     <?php if ($this->session->userdata('usertype') == 1): ?>
         <ul class="nav nav-sidebar">
-            <li class="<?php echo $param == 'home' ? 'active' : '' ?>"><a href="/">
+            <!-- <li class="<?php echo $param == 'home' ? 'active' : '' ?>"><a href="/">
                 <span class="fa fa-users"></span>Dashboard</a>
-            </li>
+            </li> -->
             <li class="<?php echo $param == 'student' ? 'active' : '' ?>"><a href="/student"><span class="fa fa-thumbs-up"></span> Student</a></li>
             <li class="<?php echo $param == 'faculty' ? 'active' : '' ?>"><a href="/faculty"><span class="fa fa-outdent"></span> Faculty</a></li>
     
@@ -90,9 +110,9 @@
         </ul>
      <?php elseif($this->session->userdata('usertype') == 2): ?>
         <ul class="nav nav-sidebar">
-            <li class="<?php echo $param == 'home' ? 'active' : '' ?>"><a href="/">
+            <!-- <li class="<?php echo $param == 'home' ? 'active' : '' ?>"><a href="/">
                 <span class="fa fa-users"></span>Dashboard</a>
-            </li>
+            </li> -->
             <li class="<?php echo $param == 'myclass' ? 'active' : '' ?>"><a href="/faculty_class"><span class="fa fa-thumbs-up"></span> My Class</a></li>
             <li class="<?php echo $param == 'lessons' ? 'active' : '' ?>"><a href="/faculty"><span class="fa fa-outdent"></span> Lessons</a></li>
             <li class="<?php echo $param == 'exam' ? 'active' : '' ?>"><a href="/examination"><span class="fa fa-outdent"></span> Examinations</a></li>
@@ -110,10 +130,10 @@
 
     <?php if ($this->session->userdata('usertype') == 3): ?>
         <ul class="nav nav-sidebar">
-            <li class="<?php echo $param == 'home' ? 'active' : '' ?>"><a href="/">
+            <!-- <li class="<?php echo $param == 'home' ? 'active' : '' ?>"><a href="/">
                 <span class="fa fa-users"></span>Dashboard</a>
-            </li>
-            <li class="<?php echo $param == 'myclass' ? 'active' : '' ?>"><a href="/student_class"><span class="fa fa-thumbs-up"></span> My Class</a></li>
+            </li> -->
+            <li class="<?php echo $param == 'myclass' ? 'active' : '' ?>"><a href="/student_class"><span class="fa fa-thumbs-up"></span>Module</a></li>
             <li class="<?php echo $param == 'student_examination' ? 'active' : '' ?>"><a href="/student_examination"><span class="fa fa-outdent"></span> Examinations</a></li>
         </ul>
     <?php endif ?>

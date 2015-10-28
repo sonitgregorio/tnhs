@@ -101,4 +101,5 @@ $route['edit_subject/(:any)']			= 'admin/edit_subject/$1';
 $route['student_examination']			= 'student/student_examination';
 $route['take_exam/(:any)']				= 'student/take_exam/$1';
 $route['examination_checking/(:any)/(:any)']				= 'student/take_exam/$1/$2';
+$route['checked_ans/(:any)']     		= 'student/take_exam/$1';
 

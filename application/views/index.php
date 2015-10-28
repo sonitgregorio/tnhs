@@ -15,7 +15,7 @@
                         
                         <form action="/login" method="post">
                             <label for="inputEmail" class="sr-only">Username</label>
-                            <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Student ID" required autofocus>
+                            <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
                             <label for="inputPassword" class="sr-only">Password</label>
                             <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                             <br>

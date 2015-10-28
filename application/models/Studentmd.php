@@ -60,4 +60,8 @@
 		{
 			return $this->db->query("SELECT tbl_question.id,tbl_question.question,tbl_answers.answer,tbl_choices.choice1,tbl_choices.choice2,tbl_choices.choice3 FROM tbl_exam,tbl_question,tbl_choices,tbl_answers WHERE tbl_exam.id=tbl_question.examid AND tbl_choices.quest_id=tbl_question.id AND tbl_question.id=tbl_answers.quest_id AND tbl_exam.id=$id")->result_array();
 		}
+		function checked($id)
+		{
+			return $this->db->query("SELECT sum(points) FROM tbl_sa,tbl_answers,tbl_question WHERE tbl_sa.answer=tbl_answers.answer AND tbl_sa.partyid='$id'  AND tbl_question.id=tbl_sa.quest_id AND tbl_question.examid='$id1'")->result_array();
+		}
 	}
