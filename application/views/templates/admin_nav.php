@@ -94,7 +94,7 @@
                 <span class="fa fa-users"></span>Dashboard</a>
             </li>
             <li class="<?php echo $param == 'myclass' ? 'active' : '' ?>"><a href="/faculty_class"><span class="fa fa-thumbs-up"></span> My Class</a></li>
-            <li class="<?php echo $param == 'lessons' ? 'active' : '' ?>"><a href="/faculty"><span class="fa fa-outdent"></span> Lessons</a></li>
+            <li class="<?php echo $param == 'lessons' ? 'active' : '' ?>"><a href="/lessons"><span class="fa fa-outdent"></span> Lessons</a></li>
             <li class="<?php echo $param == 'exam' ? 'active' : '' ?>"><a href="/examination"><span class="fa fa-outdent"></span> Examinations</a></li>
             <li class="<?php echo $param == 'grade' ? 'active' : '' ?>"><a href="/faculty"><span class="fa fa-outdent"></span> Grade Book</a></li>
         </ul>

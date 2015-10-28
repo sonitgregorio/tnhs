@@ -30,13 +30,11 @@
 		$(document).ready(function(){
 			$('.mod').click(function(){
 		 	x = $(this).data('param');
-
 		 	$.post("/student/select_data", {x}, function(data){
 		 		// alert(data);
 		 		$('.reg_student').html(data);
 		 	});
 		 });
-
 			$('#mods').click(function(){
 				x = $(this).data('param');
 				$('input[name=classid]').val(x);
@@ -46,7 +44,6 @@
 			$('.face').click(function(){
 				x= $(this).data('param');
 				$.post("/faculty/select_data", {x}, function(data){
-					// alert(data);
 					$('.faculty_reg').html(data);
 				});
 			});
@@ -64,7 +61,6 @@
 
 			$('#example').DataTable();
 
-
 			$('#section').change(function(){
 				x = $('#section').val();
 				$.post("/faculty/get_sub_byid", {x}, function(data){
@@ -72,7 +68,6 @@
 
 				});
 			});
-
 
 			$('.ac_exam').click(function(){
 				x = $(this).data('param');
