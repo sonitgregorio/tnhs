@@ -48,7 +48,7 @@
     <div class="modal-content"  style="border-radius:10px">
       <div class="modal-header header_styles" >
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add New Faculty</h4>
+        <h4 class="modal-title" id="myModalLabel">Video</h4>
       </div>
       <div class="modal-body">
            <video src="" id="vids" controls style="width:100%"></video>

@@ -50,7 +50,7 @@
 		</div>
 	</div>
 </div>
-<!-- 
+
 <div class="modal fade" id="add_student" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document" >
     <div class="modal-content"  style="border-radius:10px">
@@ -61,7 +61,7 @@
       <div class="modal-body">
         <div class="reg_student">
             <?php $this->load->view('student/register_student.php') ?>
-        </div> -->
+        </div>
     </div>
   </div>
 </div>

@@ -61,8 +61,12 @@
                                 <a href="/add_question/<?php echo $value['id'] ?>" class="btn btn-info btn-xs fac">Add Question
                                 <span class="fa fa-edit"></span></a>
                                 <?php if ($value['status'] == 0): ?>
-                                       <a href="#" class="btn btn-info btn-xs fac ac_exam" data-param="<?php echo $value['id'] ?>">Activate Exams
-                                       <span class="fa fa-star"></span></a>
+                                        <a href="/activate_exams/<?php echo $value['id'] ?>" class="btn btn-info btn-xs">Activate Exams
+                                       <span class="fa fa-star"></span></a> 
+
+
+                                       <!-- <a href="#" class="btn btn-info btn-xs fac ac_exam" data-param="<?php echo $value['id'] ?>">Activate Exams
+                                       <span class="fa fa-star"></span></a> -->
                                 <?php endif ?>
                              
                                 

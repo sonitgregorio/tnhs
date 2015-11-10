@@ -198,4 +198,41 @@
 
 			@readfile($file);
 		}
+		function checked_ans($id)
+		{
+			$points = 0;
+			$this->load->model('studentmd');
+			$examid = $id;
+			$sumpoints = $this->studentmd->get_all_points($id);
+
+
+
+			$get_result = $this->studentmd->get_exam_result($examid);
+
+			foreach ($get_result as $key => $value) {
+				$points += $value['points'];
+			}
+
+
+
+			echo $points . "|" . $sumpoints . "|" . $sumpoints * .6;
+
+
+			$data = array('examid' => $id,
+						  'points' => $points,
+						  'uid' => $this->session->userdata('uid'));
+
+			$data2 = array('sumpoints' => $sumpoints,
+						   'points' => $points);
+
+
+
+			$this->db->insert('tbl_scores', $data);
+			$data['param'] = 'student_examination';
+			$data1['classid'] = $examid;
+			$this->load->view('templates/header');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('student/exam_result', $data2);	
+			$this->load->view('templates/footer');
+		}
 	}

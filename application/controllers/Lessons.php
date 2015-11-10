@@ -24,7 +24,7 @@
 		function upload_lessons()
 		{
 			$config['upload_path']          = './assets/lessons/';
-	        $config['allowed_types']        = 'pdf|mp4';
+	        $config['allowed_types']        = 'pdf|mp4|3gp';
 	        $config['encrypt_name']         =  FALSE;
 	        $this->load->library('upload', $config);
 	        if ( ! $this->upload->do_upload('uploads'))

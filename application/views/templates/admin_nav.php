@@ -13,12 +13,27 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-<!---->
-<!--                    <li><a href="../navbar/">-->
-<!--                            <span class="fa fa-tasks"></span>-->
-<!--                            <span class="badge">10</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
+<!---->                <!--  <li>
+                            <i class="fa fa-envelope fa-1x fa-border icon-grey badge" style="margin-top:10px">1</i>
+                        </li>    -->
+                       
+                        <?php if ($this->session->userdata('usertype') != 1): ?>
+                        <li><a href="/student_examination">
+                             <span class="fa fa-tasks"></span>
+                            <?php 
+                                $x = $this->studentmd->get_kung_mayada_exam($this->session->userdata('uid'));
+                                $count = 0;
+                                foreach ($x as $key => $value) {
+                                    $count += 1;
+                                }
+
+
+                              ?>
+                            <span class="badge"><?php echo $count; ?></span>
+                         </a>
+                        </li>
+                        <?php endif ?>
+                      
 <!---->
 <!--                    <li><a href="../navbar/">-->
 <!--                            <span class="fa fa-dashcube"></span>-->
@@ -117,7 +132,7 @@
             <li class="<?php echo $param == 'myclass' ? 'active' : '' ?>"><a href="/faculty_class"><span class="fa fa-thumbs-up"></span> My Class</a></li>
             <li class="<?php echo $param == 'lessons' ? 'active' : '' ?>"><a href="/lessons"><span class="fa fa-outdent"></span> Lessons</a></li>
             <li class="<?php echo $param == 'exam' ? 'active' : '' ?>"><a href="/examination"><span class="fa fa-outdent"></span> Examinations</a></li>
-            <li class="<?php echo $param == 'grade' ? 'active' : '' ?>"><a href="/faculty"><span class="fa fa-outdent"></span> Grade Book</a></li>
+            <li class="<?php echo $param == 'grade_book' ? 'active' : '' ?>"><a href="/grade_book"><span class="fa fa-outdent"></span> Grade Book</a></li>
         </ul>
         <!-- <ul class="nav nav-sidebar">
             <li><a href="/subject"><span class="fa fa-user-secret"></span> Subject</a></li>

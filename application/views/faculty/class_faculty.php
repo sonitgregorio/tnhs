@@ -42,9 +42,9 @@
 
                         </div>
                     </div>
-                    <div class="form-group col-md-3">
-                         <label class="col-sm-4 control-label">Subject</label>
-                        <div class="col-sm-8" style="padding:0px">
+                    <div class="form-group col-md-4" style="padding:0px;margin-right:5px">
+                         <label class="col-sm-3 control-label">Subject</label>
+                        <div class="col-sm-7" style="padding:0px">
                             <select class="form-control" name="InsSub">
                                 <?php 
                                 foreach ($this->facultymd->selectsubjects() as $key => $value) { ?>
@@ -59,11 +59,15 @@
 
                             <!-- <input type="submit"> -->
                         </div>
+                        <div class="col-sm-2 pull-right">
+                             <button type="submit" class="btn btn-success">Save</button>
+
+                        </div>
                         
                     </div>
-                    <div class="col-md-1">
-                        <button type="submit" class="btn btn-success">Save</button>
-                    </div>
+                   <!--  <div class="col-md-1 pull-right" style="padding:0px">
+                       
+                    </div> -->
                 </form>
             <table class="table table-bordered table-striped">
                 <thead class="header_styles">

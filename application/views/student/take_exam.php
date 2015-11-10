@@ -13,7 +13,9 @@
 
 				<form>
 
-			<?php foreach ($this->studentmd->get_take_exam($qid) as $key => $value): ?>
+			<?php foreach ($this->studentmd->get_take_exam($qid) as $key => $value): 
+			 $rand=rand(0,3);
+			?>
 				<br />
 				<div class="col-md-12" style="padding-top:30px">
 					<p><?php echo $key+1 .".) ". $value['question'] ?>
@@ -54,7 +56,7 @@
                            
 							<?php 
 							} elseif ($rand==2) { ?>		
-
+							
 							<div  class="col-md-12 radio">
 					            <label><input class="checked1" type="radio" data-param="<?php echo $value['choice1'] ?>" data-param1="<?php echo $value['id'] ?>" name="<?php echo $value['id'] ?>" value="<?php echo  $value['choice1'] ?>" required><span>A.)&nbsp;&nbsp;</span><?php echo $value['choice1'] ?></label>
 							</div>
@@ -88,13 +90,9 @@
 							<?php }     ?>  
 				</div>
 			 <?php endforeach ?>
-
 				<div class="col-md-12"  style"margin-top:30px">
-					<form method="post" action="/checked_ans/"<?php $qid ?>>
-						 <input class="btn btn-primary pull-right" type="submit" />
-					</form>
-			 		</div>
-		      </form>
+					<a href="/checked_ans/<?php echo $qid ?>" class="btn btn-primary pull-right">Save</a>
+			 	</div>
 	</div>
 </div>
 

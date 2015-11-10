@@ -32,6 +32,35 @@
 			$this->load->view('faculty/register_faculty', $x);
 			$this->load->view('templates/footer');	
 		}
+		function grade_book()
+		{
+			$data['param'] = 'grade_book';
+			$this->load->model('facultymd');
+			$this->load->view('templates/header');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('faculty/grade_book');
+			$this->load->view('templates/footer');
+		}
+		function view_exam($id)
+		{
+			$data1['eid'] = $id;
+			$data['param'] = 'grade_book';
+			$this->load->model('facultymd');
+			$this->load->view('templates/header');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('faculty/view_exam',$data1);
+			$this->load->view('templates/footer');
+		}
+		function view_student_score($id)
+		{
+			$data1['eid'] = $id;
+			$data['param'] = 'grade_book';
+			$this->load->model('facultymd');
+			$this->load->view('templates/header');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('faculty/view_student_score',$data1);
+			$this->load->view('templates/footer');
+		}
 		function insert_faculty()
 		{
 
@@ -290,5 +319,11 @@
 				$this->db->insert('tbl_sa', $data);
 			}
 			
+		}
+		function activate_examination($id)
+		{
+			$this->session->userdata('message', $this->successMessage() .'Exam Activated</div>');
+			$this->db->query("UPDATE tbl_exam SET status = 1 WHERE id = '$id'");
+			redirect('/examination');
 		}
 	}

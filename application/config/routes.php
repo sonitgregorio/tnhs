@@ -73,6 +73,9 @@ $route['addclass']								= 'faculty/addclass';
 $route['view_stud/(:any)']						= 'faculty/view_student/$1';
 $route['insert_studentsss']						= 'faculty/insert_students';
 $route['delet_stud_class/(:any)/(:any)']		= 'faculty/delet_stud_class/$1/$2';
+$route['grade_book']							= 'faculty/grade_book';
+$route['view_exam/(:any)']						= 'faculty/view_exam/$1';
+$route['view_student_score/(:any)']				= 'faculty/view_student_score/$1';
 
 //Examination Routes
 $route['examination']							= 'faculty/examination';
@@ -102,7 +105,7 @@ $route['edit_subject/(:any)']					= 'admin/edit_subject/$1';
 $route['student_examination']					= 'student/student_examination';
 $route['take_exam/(:any)']						= 'student/take_exam/$1';
 $route['examination_checking/(:any)/(:any)']	= 'student/take_exam/$1/$2';
-$route['checked_ans/(:any)']     				= 'student/take_exam/$1';
+$route['checked_ans/(:any)']     				= 'student/checked_ans/$1';
 $route['student_examination']					= 'student/student_examination';
 $route['take_exam/(:any)']						= 'student/take_exam/$1';
 $route['examination_checking/(:any)/(:any)']	= 'student/take_exam/$1/$2';
@@ -116,6 +119,7 @@ $route['lessons']								= 'lessons/list_lessons';
 $route['upload_lessons']						= 'lessons/upload_lessons';
 $route['delete_lessons/(:any)']					= 'lessons/delete_lessons/$1';
 $route['logout']								= 'main/logout';
+$route['activate_exams/(:any)']					= 'faculty/activate_examination/$1';
 
 
 

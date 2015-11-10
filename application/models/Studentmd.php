@@ -54,7 +54,7 @@
 		}
 		function get_kung_mayada_exam($id)
 		{
-			return $this->db->query("SELECT a.id,a.status,a.description,d.subject_title, concat(f.year, '-', f.section) sec FROM tbl_exam a, tbl_classes b,tbl_student c, tbl_subject d, tbl_party e, tbl_yearsection f WHERE a.classid =b.id AND c.classid=b.id AND b.subject =d.id AND e.year_section =f.id AND c.partyid= e.id AND e.id='$id'")->result_array();
+			return $this->db->query("SELECT a.id,a.status,a.description,d.subject_title, concat(f.year, '-', f.section) sec FROM tbl_exam a, tbl_classes b,tbl_student c, tbl_subject d, tbl_party e, tbl_yearsection f WHERE a.classid =b.id AND c.classid=b.id AND b.subject =d.id AND e.year_section =f.id AND c.partyid= e.id AND e.id='$id' AND a.id not in(SELECT examid FROM tbl_scores WHERE uid = '$id')")->result_array();
 		}
 		function get_take_exam($id)
 		{
@@ -63,6 +63,7 @@
 		function checked($id)
 		{
 			return $this->db->query("SELECT sum(points) FROM tbl_sa,tbl_answers,tbl_question WHERE tbl_sa.answer=tbl_answers.answer AND tbl_sa.partyid='$id'  AND tbl_question.id=tbl_sa.quest_id AND tbl_question.examid='$id1'")->result_array();
+		}
 		function get_myclass() 
 		{
 			$uid = $this->session->userdata('uid');
@@ -71,5 +72,19 @@
 		function get_my_lessons($id)
 		{
 			return $this->db->query("SELECT b.* FROM tbl_classes a, tbl_lessons b WHERE a.id = $id AND a.uid = b.uid AND a.subject = b.subjectid")->result_array();
+		}
+		function get_exam_result($id)
+		{
+			return $this->db->query("SELECT * FROM `tbl_sa`, tbl_answers, tbl_question 
+									 WHERE tbl_answers.quest_id = tbl_sa.quest_id 
+									 AND tbl_answers.answer = tbl_sa.answer 
+									 AND tbl_question.examid = $id 
+									 AND tbl_question.id = tbl_answers.quest_id 
+									 AND tbl_sa.quest_id = tbl_question.id")->result_array();
+		}
+		function get_all_points($id)
+		{
+			$x = $this->db->query("SELECT SUM(points) as p FROM tbl_question WHERE examid = '$id'")->row_array();
+			return $x['p'];
 		}
 	}

@@ -126,4 +126,20 @@
 									 FROM tbl_question, tbl_answers WHERE examid = $id 
 									 AND tbl_answers.quest_id = tbl_question.id")->result_array();
 		}
+		function get_subject($id)
+		{
+			return $this->db->query("SELECT tbl_classes.id as classid,tbl_subject.subject_code,tbl_subject.subject_title,tbl_classes.section, concat(tbl_yearsection.year, ' ', tbl_yearsection.section) sec FROM tbl_party,tbl_subject,tbl_classes, tbl_yearsection WHERE tbl_party.id=tbl_classes.uid AND tbl_subject.id=tbl_classes.subject AND tbl_party.id='$id' AND tbl_yearsection.id = tbl_classes.section")->result_array();
+		}
+		function get_exam($id)
+		{
+			return $this->db->query("SELECT tbl_exam.id,tbl_exam.description FROM tbl_classes,tbl_exam WHERE tbl_exam.classid='$id' AND tbl_classes.id='$id'")->result_array();
+		}
+		function get_scores($id)
+		{
+			return $this->db->query("SELECT * FROM tbl_scores,tbl_exam,tbl_party WHERE tbl_scores.examid='$id' AND tbl_exam.id='$id' AND tbl_scores.uid=tbl_party.id")->result_array();
+		}
+		function select_sum_scores($id)
+		{
+			return $this->db->query("SELECT SUM(points) as points FROM tbl_question WHERE examid='$id'")->row_array();
+		}
 	} 
