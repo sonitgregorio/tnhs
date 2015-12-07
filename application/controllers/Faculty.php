@@ -326,4 +326,14 @@
 			$this->db->query("UPDATE tbl_exam SET status = 1 WHERE id = '$id'");
 			redirect('/examination');
 		}
+		function view_ranking($id)
+		{
+			$this->load->model('facultymd');
+			$data['param'] = 'myclass';
+			$data['classid'] = $id;
+			// $this->load->view('templates/header');
+			// $this->load->view('templates/admin_nav', $data);
+			$this->load->view('faculty/view_ranking', $data);
+			$this->load->view('templates/footer');
+		}
 	}

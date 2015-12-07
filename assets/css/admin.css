@@ -22,4 +22,10 @@
 .thumbnail-accommodation-large{
     width: 150px;
 }
+@media print
+    {
+        .tobehide{
+            display: none;
+        }
+    }
 

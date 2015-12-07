@@ -75,7 +75,7 @@
                     <th>Section</th>
                     <th>Subject Code</th>
                     <th>Title</th>
-                    <th width="200">Unit</th>
+                    <th>Action</th> 
                 </thead>
                 <tbody>
                     <?php 
@@ -88,6 +88,7 @@
                             <td>
                                 <a href="/view_stud/<?php echo $value['id'] ?>" class="btn btn-info btn-xs fac">View Student
                                 <span class="fa fa-edit"></span></a>
+                                <a href="/view_rank/<?php echo $value['id'] ?>" class="btn btn-success btn-xs">Ranking</a>
                                 <a href="/delete_classes/<?php echo $value['id'] ?>" class="btn btn-danger btn-xs "  onclick="return confirm('Are You Sure?')">Delete
                                     <span class="fa fa-trash-o"></span>
                                 </a>

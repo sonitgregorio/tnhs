@@ -142,4 +142,14 @@
 		{
 			return $this->db->query("SELECT SUM(points) as points FROM tbl_question WHERE examid='$id'")->row_array();
 		}
+		function get_examid($classid)
+		{
+			return $this->db->query("SELECT sum(points) as p, CONCAT(tbl_party.firstname, ' ', tbl_party.middlename, ' ', tbl_party.lastname) as fname
+									FROM tbl_scores,tbl_exam,tbl_party 
+									WHERE tbl_scores.examid = tbl_exam.id 
+									AND tbl_scores.uid=tbl_party.id 
+									AND tbl_exam.classid = $classid
+									GROUP by tbl_scores.uid
+									ORDER by p DESC")->result_array();
+		}
 	} 

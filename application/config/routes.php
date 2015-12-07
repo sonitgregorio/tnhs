@@ -121,6 +121,9 @@ $route['delete_lessons/(:any)']					= 'lessons/delete_lessons/$1';
 $route['logout']								= 'main/logout';
 $route['activate_exams/(:any)']					= 'faculty/activate_examination/$1';
 
+//Ranking
+$route['view_rank/(:any)']					= 'faculty/view_ranking/$1';
+
 
 
 
