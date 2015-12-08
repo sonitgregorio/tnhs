@@ -63,12 +63,9 @@
                                 <?php if ($value['status'] == 0): ?>
                                         <a href="/activate_exams/<?php echo $value['id'] ?>" class="btn btn-info btn-xs">Activate Exams
                                        <span class="fa fa-star"></span></a> 
-
-
-                                       <!-- <a href="#" class="btn btn-info btn-xs fac ac_exam" data-param="<?php echo $value['id'] ?>">Activate Exams
-                                       <span class="fa fa-star"></span></a> -->
                                 <?php endif ?>
-                             
+                             <a href="#" class="btn btn-success btn-xs fac ac_exam" data-param="<?php echo $value['id'] ?>">Activate
+                                       <span class="fa fa-star"></span></a>
                                 
                                 <a href="" class="btn btn-danger btn-xs "  onclick="return confirm('Are You Sure?')">Delete
                                     <span class="fa fa-trash-o"></span>
@@ -84,6 +81,7 @@
 
 
 
+    <!-- Modal For Activation of Exam/Quiz. -->
 <div class="modal fade" id="exams" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
   <div class="modal-dialog" role="document" >
     
@@ -95,8 +93,8 @@
       </div>
       <div class="modal-body">
       <form class="form-horizontal" action="/activate_exams" method="post">
-      <input type="text" id="examids" name="examid" class="form-control">
-                   <!--  <input type="hidden" id="examids" name="examid" class="form-control"> 
+      <input type="hidden" id="examids" name="examid" class="form-control">
+                    <input type="hidden" id="examids" name="examid" class="form-control"> 
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Date of Activation</label>
                         <div class="col-sm-8">
@@ -114,7 +112,7 @@
                         <div class="col-sm-8">
                             <input type="time" class="form-control" name="date_activation" required>   
                         </div>
-                    </div> -->
+                    </div>
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Duration</label>
                         <div class="col-sm-8">
