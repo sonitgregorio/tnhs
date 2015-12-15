@@ -12,6 +12,7 @@
 	    <link href="../assets/css/datepicker.css" rel="stylesheet">
 	    <link href="../assets/css/user.css" rel="stylesheet">
 	    <link href="../assets/css/admin.css" rel="stylesheet">
+	    <link href="../assets/css/print.css" rel="stylesheet">
 	    <link href="../assets/css/dashboard.css" rel="stylesheet">
 
 
@@ -19,10 +20,9 @@
 	    <link href="../assets/css/navbar-static-top.css" rel="stylesheet" type="text/css">
 	    <link href="../assets/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body class="backcolor">
 		<nav class="navbar navbar-default navbar-fixed-top tobehide">
     <div class="container-fluid">
-<!--        <div class="container">-->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
@@ -42,25 +42,20 @@
                         <li style="padding-top:10px;padding-right:5px;padding-left:5px;">
                          <button href="/faculty_class" class="btn btn-success" style="padding-top:10" id="backs"> <span class="fa fa-arrow-left">Back</span></button>
                         </li>
-                      
-                    
                 </ul>
             </div>
-
     </div>
 </nav>
-
 	<?php 
 		$ranks = $this->facultymd->get_examid($classid);
 		$counter = 0;
 	 ?>
+	<div class="col-md-8 col-md-offset-2 pages">
+		<div class="col-md-12">
+		 	<center><p style="font-size:12px">CLASS RANKING</p></center>
+		 	<center><p style="font-size:12px">Of</p></center>
+		</div>
 
-	
-	<div class="col-md-8 col-md-offset-2" style="margin-top:10px">
-	 <div class="col-md-12">
-	 	<center><p style="font-size:15px">CLASS RANKING</p></center>
-
-	 </div>
 		<table class="table table-bordered">
 			<thead style="font-size:12px">
 				<th style="width:10px">No.</th>
@@ -86,6 +81,5 @@
 				location.href = '/faculty_class'
 			});
 		});
-
 	</script>
 </html>

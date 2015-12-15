@@ -5,7 +5,7 @@
 			Examination      
 			<?php 
 			 $qid;
-			 $rand=rand(0,3);
+			 //$rand=rand(0,3);
 			 ?>      	
 		</div>
 		<div class="panel-body">

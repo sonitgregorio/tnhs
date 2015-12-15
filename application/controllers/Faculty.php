@@ -291,12 +291,37 @@
 		}
 		function activate_exams()
 		{
-			$data = array('time_duration' => $this->input->post('duration'),
-						  'status' => 1);
 
-			$this->db->where('id', $this->input->post('examid'));
-			$this->db->update('tbl_exam', $data);
-			redirect('/examination');
+			$this->load->model('facultymd');
+			$d_activation = $this->input->post('date_activation');
+			$d_deactivation = $this->input->post('date_deactivate');
+			$t_activation = $this->input->post('time_activation');
+			$t_deactivation = $this->input->post('time_deactivation');
+			$duration  = $this->input->post('duration');
+			$examid = $this->input->post('examid');
+
+			$data = array('date_activation' => $d_activation, 'date_deactivation' => $d_deactivation,
+						  'time_start' => $t_activation, 'time_end' => $t_deactivation,
+						  'time_duration' => $duration, 'status' => '1');
+
+			$classid = $this->facultymd->up_exam($data, $examid);
+			
+			$all_student = $this->facultymd->get_students($classid);
+
+			foreach ($all_student as $key => $value) {
+				$data['examid'] = $examid;
+				$data['uid'] = $value['partyid'];
+				$this->facultymd->insert_to_stud($data, $examid, $value['partyid']);
+			}
+
+
+			print_r($data);
+			// $data = array('time_duration' => $this->input->post('duration'),
+			// 			  'status' => 1);
+
+			// $this->db->where('id', $this->input->post('examid'));
+			// $this->db->update('tbl_exam', $data);
+			// redirect('/examination');
 		}
 		function insert_insert_answers()
 		{

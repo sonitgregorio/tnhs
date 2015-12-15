@@ -152,4 +152,36 @@
 									GROUP by tbl_scores.uid
 									ORDER by p DESC")->result_array();
 		}
+		function up_exam($data, $examid)
+		{
+			$this->db->where('id', $examid);
+			$this->db->update('tbl_exam', $data);
+
+			$this->db->where('id', $examid);
+			$this->db->select('classid');
+			$x = $this->db->get('tbl_exam')->row_array();
+			return $x['classid'];
+
+		}
+		function get_students($classid)
+		{
+			$this->db->where('classid', $classid);
+			$this->db->select('partyid');
+			return $this->db->get('tbl_student')->result_array();
+		}
+		function insert_to_stud($data, $examid, $uid)
+		{
+			$this->db->where('examid', $examid);
+			$this->db->where('uid', $uid);
+			$x = $this->db->get('tbl_stud_exam')->num_rows();
+			//Checking if exist in tbl_stud_exam.. if exist. update else insert
+			if ($x > 0) {
+				$this->db->where('uid', $uid);
+				$this->db->where('examid', $examid);
+				$this->db->update('tbl_stud_exam', $data);
+			}
+			else{
+				$this->db->insert('tbl_stud_exam', $data);
+			}
+		}
 	} 

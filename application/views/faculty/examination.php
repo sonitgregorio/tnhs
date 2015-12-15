@@ -61,15 +61,23 @@
                                 <a href="/add_question/<?php echo $value['id'] ?>" class="btn btn-info btn-xs fac">Add Question
                                 <span class="fa fa-edit"></span></a>
                                 <?php if ($value['status'] == 0): ?>
-                                        <a href="/activate_exams/<?php echo $value['id'] ?>" class="btn btn-info btn-xs">Activate Exams
-                                       <span class="fa fa-star"></span></a> 
-                                <?php endif ?>
-                             <a href="#" class="btn btn-success btn-xs fac ac_exam" data-param="<?php echo $value['id'] ?>">Activate
+                                      <!--   <a href="/activate_exams/<?php echo $value['id'] ?>" class="btn btn-info btn-xs">Activate Exams
+                                       <span class="fa fa-star"></span></a>  -->
+                                         <a href="#" class="btn btn-success btn-xs fac ac_exam" data-param="<?php echo $value['id'] ?>">Activate
                                        <span class="fa fa-star"></span></a>
-                                
-                                <a href="" class="btn btn-danger btn-xs "  onclick="return confirm('Are You Sure?')">Delete
+                                       <a href="" class="btn btn-danger btn-xs "  onclick="return confirm('Are You Sure?')">Delete
                                     <span class="fa fa-trash-o"></span>
                                 </a>
+                                <?php else: ?>
+                                    <a href="#" class="btn btn-primary btn-xs fac ac_exam" data-param="<?php echo $value['id'] ?>">Deactivate
+                                       <span class="fa fa-star"></span></a>
+                                       <a href="#" class="btn btn-success btn-xs fac ac_exam" data-param="<?php echo $value['id'] ?>">List
+                                       <span class="fa fa-star"></span></a>
+
+                                <?php endif ?>
+                           
+                                
+                                
                             </td>        
                         </tr>
                 <?php endforeach ?>
@@ -79,13 +87,9 @@
     </div>
 </div>
 
-
-
     <!-- Modal For Activation of Exam/Quiz. -->
 <div class="modal fade" id="exams" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
   <div class="modal-dialog" role="document" >
-    
-    
     <div class="modal-content"  style="border-radius:10px">
       <div class="modal-header header_styles" >
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -93,41 +97,46 @@
       </div>
       <div class="modal-body">
       <form class="form-horizontal" action="/activate_exams" method="post">
-      <input type="hidden" id="examids" name="examid" class="form-control">
-                    <input type="hidden" id="examids" name="examid" class="form-control"> 
-                    <div class="form-group">
+                    <input type="hidden" id="examids" name="examid" class="form-control">
+                        <div class="form-group">
                         <label class="col-sm-4 control-label">Date of Activation</label>
                         <div class="col-sm-8">
                             <input type="date" class="form-control" name="date_activation" required>   
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">Time Start</label>
-                        <div class="col-sm-8">
-                            <input type="time" class="form-control" name="date_activation" required>   
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">Time End</label>
-                        <div class="col-sm-8">
-                            <input type="time" class="form-control" name="date_activation" required>   
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">Duration</label>
-                        <div class="col-sm-8">
-                            <input type="time" class="form-control" name="duration" required>   
-                        </div>
-                    </div>
-             
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-info">Save</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </form>
 
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Date of Deactivation</label>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control" name="date_deactivate" required>   
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Time Of Activation</label>
+                            <div class="col-sm-8">
+                                <input type="time" class="form-control" name="time_activation" required>   
+                            </div>
+                        </div>    
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Time Of Deactivation</label>
+                            <div class="col-sm-8">
+                                <input type="time" class="form-control" name="time_deactivation" required>   
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Duration</label>
+                            <div class="col-sm-8">
+                                <input type="text" pattern="[0-2]{1}[0-9]{1}:[0-5]{1}[0-9]{1}" name="duration" placeholder="example (1:30)"/>
+                                <!-- <input type="time" class="form-control" name="duration" required>    -->
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                              <button type="submit" class="btn btn-primary">Save</button>
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+            </form>
         </div>
-      
       </div>
     </div>
 </div>

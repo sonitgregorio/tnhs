@@ -54,7 +54,13 @@
 		}
 		function get_kung_mayada_exam($id)
 		{
-			return $this->db->query("SELECT a.id,a.status,a.description,d.subject_title, concat(f.year, '-', f.section) sec FROM tbl_exam a, tbl_classes b,tbl_student c, tbl_subject d, tbl_party e, tbl_yearsection f WHERE a.classid =b.id AND c.classid=b.id AND b.subject =d.id AND e.year_section =f.id AND c.partyid= e.id AND e.id='$id' AND a.id not in(SELECT examid FROM tbl_scores WHERE uid = '$id')")->result_array();
+			return $this->db->query("SELECT a.examid, e.description, b.subject_title, concat(c.year, ' - ', c.section) as sec, a.status   
+									 FROM `tbl_stud_exam` a, tbl_subject b, tbl_yearsection c, tbl_classes d, tbl_exam e  
+									 where a.uid = $id 
+									 AND a.examid = e.id 
+									 AND e.classid = d.id
+									 AND d.section = c.id
+									 AND b.id = d.subject")->result_array();
 		}
 		function get_take_exam($id)
 		{
