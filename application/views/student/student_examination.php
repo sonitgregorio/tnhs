@@ -1,3 +1,7 @@
+<?php 
+date_default_timezone_set("Asia/Manila"); 
+
+ ?>
 <div class="col-md-2"></div>
 <div class="col-md-10">
     <div class="panel panel-default">
@@ -22,20 +26,25 @@
                             <td><?php echo $value['sec'] ?></td>
                             <td><?php 
 
-                            if ($value['status']==1) {
-                                echo 'Activated';
+                            if ($value['date_activation'] <= date('Y-m-d') AND $value['date_deactivation'] > date('Y-m-d') AND $value['time_start'] <= date('H:i:s') AND $value['time_end'] > date('H:i:s') AND $value['status'] == 1) {
+                                echo 'Activated';   
                             } else {
                                 echo 'Deactivated';
                             }
                            ?></td>
                              <td>
-<!--                                 <a href="#"data-toggle="modal" data-target="#add_student"  class="btn btn-info btn-xs mod" 
+                                <?php if ($value['date_activation'] <= date('Y-m-d') AND $value['date_deactivation'] > date('Y-m-d') AND $value['time_start'] <= date('H:i:s') AND $value['time_end'] > date('H:i:s') AND $value['status'] == 1): ?>
+                                 <a href="/take_exam/<?php echo $value['examid'] ?>"  class="btn btn-primary btn-xs" onclick="return confirm('Are You Sure?')">Take Exam</a>
+                                <?php endif ?>
+
+
+                             <!--    <a href="#"data-toggle="modal" data-target="#add_student"  class="btn btn-info btn-xs mod" 
                                 data-param="<?php echo  $value['id'] ?>"
 
                                 > <span class="fa fa-edit"></span></a>
                                 <a href="/delete_stud/<?php echo $value['id'] ?>" class="btn btn-danger btn-xs "  onclick="return confirm('Are You Sure?')"><span class="fa fa-trash-o"></span></a>
                              -->
-                                 <a href="/take_exam/<?php echo $value['examid'] ?>"  class="btn btn-primary btn-xs" onclick="return confirm('Are You Sure?')">Take Exam</a>
+                               
                             
                             </td>        
                         </tr>

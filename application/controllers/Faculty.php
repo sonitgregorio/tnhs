@@ -313,9 +313,9 @@
 				$data['uid'] = $value['partyid'];
 				$this->facultymd->insert_to_stud($data, $examid, $value['partyid']);
 			}
+			$this->session->set_flashdata('message', $this->successMessage() .'Exam Activated</div>');
+			redirect("/examination");
 
-
-			print_r($data);
 			// $data = array('time_duration' => $this->input->post('duration'),
 			// 			  'status' => 1);
 
@@ -347,7 +347,7 @@
 		}
 		function activate_examination($id)
 		{
-			$this->session->userdata('message', $this->successMessage() .'Exam Activated</div>');
+			$this->session->set_flashdata('message', $this->successMessage() .'Exam Activated</div>');
 			$this->db->query("UPDATE tbl_exam SET status = 1 WHERE id = '$id'");
 			redirect('/examination');
 		}
@@ -356,9 +356,24 @@
 			$this->load->model('facultymd');
 			$data['param'] = 'myclass';
 			$data['classid'] = $id;
-			// $this->load->view('templates/header');
-			// $this->load->view('templates/admin_nav', $data);
 			$this->load->view('faculty/view_ranking', $data);
 			$this->load->view('templates/footer');
 		}
-	}
+		function deactivate($id)
+		{
+			$this->load->model('facultymd');
+			$this->facultymd->deactivate($id);
+			$this->session->set_flashdata('message', $this->successMessage() .'Exam Deactivated</div>');
+			redirect('/examination');
+		}
+		function list_stud__exam($id)
+		{
+			$this->load->model('facultymd');
+			$data['param'] = 'examination';
+			$data['examid'] = $id;
+			$this->load->view('templates/header');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('faculty/listing_examination');
+			$this->load->view('templates/footer');
+		}
+	}	

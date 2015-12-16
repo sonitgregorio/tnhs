@@ -69,9 +69,9 @@
                                     <span class="fa fa-trash-o"></span>
                                 </a>
                                 <?php else: ?>
-                                    <a href="#" class="btn btn-primary btn-xs fac ac_exam" data-param="<?php echo $value['id'] ?>">Deactivate
+                                    <a href="/deactivate/<?php echo $value['id'] ?>" class="btn btn-primary btn-xs fac">Deactivate
                                        <span class="fa fa-star"></span></a>
-                                       <a href="#" class="btn btn-success btn-xs fac ac_exam" data-param="<?php echo $value['id'] ?>">List
+                                       <a href="/list_of_student/<?php echo $value['id'] ?>" class="btn btn-success btn-xs">List
                                        <span class="fa fa-star"></span></a>
 
                                 <?php endif ?>
@@ -127,7 +127,7 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label">Duration</label>
                             <div class="col-sm-8">
-                                <input type="text" pattern="[0-2]{1}[0-9]{1}:[0-5]{1}[0-9]{1}" name="duration" placeholder="example (1:30)"/>
+                                <input type="text" pattern="[0-2]{1}[0-9]{1}:[0-5]{1}[0-9]{1}" name="duration" class="form-control" placeholder="example (1:30)"/>
                                 <!-- <input type="time" class="form-control" name="duration" required>    -->
                             </div>
                         </div>

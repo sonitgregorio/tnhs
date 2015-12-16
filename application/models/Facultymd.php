@@ -184,4 +184,18 @@
 				$this->db->insert('tbl_stud_exam', $data);
 			}
 		}
+		function deactivate($id)
+		{
+			$this->db->where('id', $id);
+			$this->db->update('tbl_exam', array('status' => 0));
+
+			$this->db->where('examid', $id);
+			$this->db->update('tbl_stud_exam', array('status' => 0));
+		}
+		function getstudents($id)
+		{
+			return $this->db->query("SELECT a.status, b.idno, concat(b.firstname, ' ' , b.middlename, ' ' ,b.lastname) as names, b.id, a.examid 
+							  FROM tbl_stud_exam a, tbl_party b 
+							  WHERE a.examid = $id and a.uid = b.id")->result_array();
+		}
 	} 

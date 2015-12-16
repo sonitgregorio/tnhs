@@ -122,8 +122,10 @@ $route['logout']								= 'main/logout';
 $route['activate_exams/(:any)']					= 'faculty/activate_examination/$1';
 
 //Ranking
-$route['view_rank/(:any)']					= 'faculty/view_ranking/$1';
+$route['view_rank/(:any)']						= 'faculty/view_ranking/$1';
+$route['deactivate/(:any)']						= 'faculty/deactivate/$1';				
 
 
-
+//Route for listing of all student for examination
+$route['list_of_student/(:any)']				= 'faculty/list_stud__exam/$1';
 
