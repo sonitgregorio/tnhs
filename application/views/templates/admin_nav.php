@@ -18,7 +18,7 @@
                         </li>    -->
                        
                         <?php if ($this->session->userdata('usertype') != 1): ?>
-                        <li><a href="/student_examination">
+                         <li><a href="/student_examination">
                              <span class="fa fa-tasks"></span>
                             <?php 
                                 $x = $this->studentmd->get_kung_mayada_exam($this->session->userdata('uid'));
@@ -31,7 +31,7 @@
                               ?>
                             <span class="badge"><?php echo $count; ?></span>
                          </a>
-                        </li>
+                        </li> 
                         <?php endif ?>
                       
 <!---->

@@ -26,16 +26,17 @@ date_default_timezone_set("Asia/Manila");
                             <td><?php echo $value['sec'] ?></td>
                             <td><?php 
 
-                            if ($value['date_activation'] <= date('Y-m-d') AND $value['date_deactivation'] > date('Y-m-d') AND $value['time_start'] <= date('H:i:s') AND $value['time_end'] > date('H:i:s') AND $value['status'] == 1) {
+                            if ($value['date_activation'] <= date('Y-m-d') AND $value['date_deactivation'] >= date('Y-m-d') AND $value['time_start'] <= date('H:i:s')  AND $value['status'] == 1) {
                                 echo 'Activated';   
                             } else {
+                                // echo $value['date_activation'];
                                 echo 'Deactivated';
                             }
                            ?></td>
                              <td>
-                                <?php if ($value['date_activation'] <= date('Y-m-d') AND $value['date_deactivation'] > date('Y-m-d') AND $value['time_start'] <= date('H:i:s') AND $value['time_end'] > date('H:i:s') AND $value['status'] == 1): ?>
+                            <?php if ($value['date_activation'] <= date('Y-m-d') AND $value['date_deactivation'] >= date('Y-m-d') AND $value['time_start'] <= date('H:i:s') AND  $value['status'] == 1): ?>
                                  <a href="/take_exam/<?php echo $value['examid'] ?>"  class="btn btn-primary btn-xs" onclick="return confirm('Are You Sure?')">Take Exam</a>
-                                <?php endif ?>
+                            <?php endif ?>
 
 
                              <!--    <a href="#"data-toggle="modal" data-target="#add_student"  class="btn btn-info btn-xs mod" 

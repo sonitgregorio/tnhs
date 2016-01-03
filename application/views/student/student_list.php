@@ -74,9 +74,9 @@
                     <?php endforeach ?>
                 </tbody>
             </table>
-            <form method="post" action="/insert_studentsss">
+           <!--  <form method="post" action="/insert_studentsss">
                   <input type="submit">
-            </form>
+            </form> -->
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

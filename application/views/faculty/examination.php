@@ -99,6 +99,12 @@
       <form class="form-horizontal" action="/activate_exams" method="post">
                     <input type="hidden" id="examids" name="examid" class="form-control">
                         <div class="form-group">
+                            <label class="col-sm-4 control-label">Passing Score</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="score" required>   
+                            </div>
+                        </div>
+                        <div class="form-group">
                         <label class="col-sm-4 control-label">Date of Activation</label>
                         <div class="col-sm-8">
                             <input type="date" class="form-control" name="date_activation" required>   

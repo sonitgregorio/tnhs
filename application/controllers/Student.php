@@ -227,9 +227,20 @@
 
 
 
+
+
+
 			$this->db->insert('tbl_scores', $data);
 			$data['param'] = 'student_examination';
 			$data1['classid'] = $examid;
+
+			//UPDATE STATUS
+			$this->db->where('examid', $id);
+			$this->db->where('uid', $this->session->userdata('uid'));
+			$this->db->update('tbl_stud_exam', array('status' => 0));
+
+
+
 			$this->load->view('templates/header');
 			$this->load->view('templates/admin_nav', $data);
 			$this->load->view('student/exam_result', $data2);	

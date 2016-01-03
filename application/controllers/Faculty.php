@@ -299,10 +299,11 @@
 			$t_deactivation = $this->input->post('time_deactivation');
 			$duration  = $this->input->post('duration');
 			$examid = $this->input->post('examid');
+			$passing = $this->input->post('score');
 
 			$data = array('date_activation' => $d_activation, 'date_deactivation' => $d_deactivation,
 						  'time_start' => $t_activation, 'time_end' => $t_deactivation,
-						  'time_duration' => $duration, 'status' => '1');
+						  'time_duration' => $duration, 'status' => '1', 'passing' => $passing);
 
 			$classid = $this->facultymd->up_exam($data, $examid);
 			
@@ -375,5 +376,33 @@
 			$this->load->view('templates/admin_nav', $data);
 			$this->load->view('faculty/listing_examination');
 			$this->load->view('templates/footer');
+		}
+		function stud_deactivate($examid, $uid)
+		{
+			$this->db->where('examid', $examid);
+			$this->db->where('uid', $uid);
+			$this->db->update('tbl_stud_exam', array('status' => 0));
+			redirect('/list_of_student/' . $examid);
+		}
+		function reactivate_stud_exam()
+		{
+			$this->load->model('facultymd');
+			$d_activation = $this->input->post('date_activation');
+			$d_deactivation = $this->input->post('date_deactivate');
+			$t_activation = $this->input->post('time_activation');
+			$t_deactivation = $this->input->post('time_deactivation');
+			$duration  = $this->input->post('duration');
+			$examid = $this->input->post('examid');
+			$uid = $this->input->post('uid');
+			$data = array('date_activation' => $d_activation, 'date_deactivation' => $d_deactivation,
+						  'time_start' => $t_activation, 'time_end' => $t_deactivation,
+						  'time_duration' => $duration, 'status' => '1');
+
+			$this->db->where('uid', $uid);
+			$this->db->where('examid', $examid);
+			$this->db->update('tbl_stud_exam', $data);
+			redirect('/list_of_student/' . $examid);
+
+
 		}
 	}	

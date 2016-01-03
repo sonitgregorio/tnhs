@@ -74,6 +74,14 @@
 				$('input[name=examid]').val(x);
 				$('#exams').modal('show');
 			});
+
+			$('.reactivate').click(function(){
+				x = $(this).data('param');
+				y = $(this).data('param1');
+				$('input[name=examid').val(x);
+				$('input[name=uid').val(y);
+				$('#reactive_exam').modal('show');
+			})
 			
 		
 			$('.checked1').click(function(){
@@ -86,7 +94,9 @@
 						// alert(data);
 				});
 			});
-		
+			
+
+
 
 			$('.view_vid').click(function(){
 				x = $(this).data('param');
