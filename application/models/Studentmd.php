@@ -93,4 +93,8 @@
 			$x = $this->db->query("SELECT SUM(points) as p FROM tbl_question WHERE examid = '$id'")->row_array();
 			return $x['p'];
 		}
+		function get_gradebook($id)
+		{
+			return $this->db->query("SELECT tbl_scores.points,tbl_exam.passing,tbl_subject.subject_title FROM tbl_scores,tbl_exam,tbl_classes,tbl_subject WHERE tbl_exam.id=tbl_scores.examid AND tbl_scores.uid=$id AND tbl_exam.status=1 AND tbl_classes.subject=tbl_subject.id AND tbl_exam.classid=tbl_classes.id")->result_array();
+		}
 	}

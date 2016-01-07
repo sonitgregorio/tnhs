@@ -24,7 +24,7 @@
 		function upload_lessons()
 		{
 			$config['upload_path']          = './assets/lessons/';
-	        $config['allowed_types']        = 'pdf|mp4|3gp';
+	        $config['allowed_types']        = 'pdf|mp4|3gp|docx|doc|xlsx|xl';
 	        $config['encrypt_name']         =  FALSE;
 	        $this->load->library('upload', $config);
 	        if ( ! $this->upload->do_upload('uploads'))
@@ -33,7 +33,7 @@
 	        }
 	        else
 	        {
-	        	$this->session->set_flashdata('message', $this->faildemessage() . 'Lessons Added</div>');
+	        	$this->session->set_flashdata('message', $this->successMessage() . 'Lessons Added</div>');
 	      		$filename = $this->upload->data('file_name');
 	      		$subject = $this->input->post('subject');
 	      		$description = $this->input->post('description');

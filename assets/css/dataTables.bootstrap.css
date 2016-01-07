@@ -1,0 +1,37 @@
+.top_design > a{
+    color: #ffffff
+}
+
+.thumbnail-accommodation-small{
+    width: 75px;
+}
+
+.thumbnail-accommodation-large{
+    width: 150px;
+}
+
+.login_container_design{
+    max-width: 500px;
+    margin: 0 auto;
+    /*position:absolute;*/
+}
+
+.top_design > a{
+    color: #ffffff
+}
+
+.container-admin{
+    padding: 20px;
+    border-radius: 5px;
+    background: #ffffff;
+    border: 1px solid lightgray;
+    margin-bottom: 15px;
+}
+
+.thumbnail-accommodation-small{
+    width: 50px;
+}
+
+.thumbnail-accommodation-large{
+    width: 150px;
+}

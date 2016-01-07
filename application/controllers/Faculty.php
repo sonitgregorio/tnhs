@@ -28,7 +28,7 @@
 			$this->load->model('facultymd');
 			$this->load->model('studentmd');
 			$id = $this->input->post('x');
-			$x = $this->facultymd->select_data($id);
+			$x = $this->facultymd->select_data_to($id);
 			$this->load->view('faculty/register_faculty', $x);
 			$this->load->view('templates/footer');	
 		}
@@ -120,7 +120,7 @@
 
 				if ($this->input->post('sid') == '') 
 				{
-					$this->session->set_flashdata('message', $this->successMessage() . 'Student Added</div>');
+					$this->session->set_flashdata('message', $this->successMessage() . 'Instructor Added</div>');
 
 					$x = $this->studentmd->insert_student($party);
 					$user = array('username' => $username,
@@ -141,7 +141,7 @@
 						   'year_section' => $year_section,
 						   'usertype' => $usertype);
 						 
-					$this->session->set_flashdata('message', $this->successMessage() . 'Student Updated</div>');
+					$this->session->set_flashdata('message', $this->successMessage() . 'Instructor Updated</div>');
 					$this->studentmd->update_student($this->input->post('sid'), $party2);
 					$xz = 1;
 				}
@@ -404,5 +404,20 @@
 			redirect('/list_of_student/' . $examid);
 
 
+		}
+		function delete_sch($id)
+		{
+			$this->db->where('id', $id);
+			$this->db->delete('tbl_year');
+			redirect('/sch_yr');
+		}
+		function download_document($filename)
+		{
+			  $this->load->helper('download');
+              $this->load->library('encryption');
+            
+              $data = './assets/lessons/' . $filename;
+              $name = $x;
+              force_download($name, $data);
 		}
 	}	

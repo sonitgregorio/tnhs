@@ -3,7 +3,7 @@
 <div class="col-md-10">
 	<div class="panel panel-default">
 		<div class="header_styles" style="padding:15px">
-			List of Student 
+			List of Faculty 
 
 				 <div class="dropdown pull-right" >
                     <button id="dLabel" type="button" class="btn btn-info btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:2px">
@@ -37,7 +37,7 @@
                         <td><?php echo $value['firstname'] . " " . $value['middlename'] . " " . $value['lastname'] ?></td>
                         <td><?php echo $value['address'] ?></td>
                         <td>
-                            <a href="#"data-toggle="modal" data-target="#faculty"  class="btn btn-info btn-xs fac" 
+                            <a href=""data-toggle="modal" data-target="#faculty"  class="btn btn-info btn-xs face" 
                             data-param="<?php echo  $value['id'] ?>"
 
                             > <span class="fa fa-edit"></span></a>
@@ -56,7 +56,7 @@
     <div class="modal-content"  style="border-radius:10px">
       <div class="modal-header header_styles" >
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add New Faculty</h4>
+        <h4 class="modal-title" id="myModalLabel">Faculty Information</h4>
       </div>
       <div class="modal-body">
             <div class="faculty_reg">

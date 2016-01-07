@@ -18,7 +18,7 @@
 
  ?>
  <form class="form-horizontal form_submit" method="post" action="/insert_stud" onsubmit="return false">
-         <input type="hidden" value="3" name="usertype">
+        <input type="hidden" value="3" name="usertype">
         <input type="hidden" value="<?php echo $sid ?>" name="sid">
        	<div class="row">
             <div class="col-md-12">

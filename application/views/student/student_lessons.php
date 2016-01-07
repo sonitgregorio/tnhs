@@ -24,10 +24,13 @@
                                      <?php if ($x[1] == 'pdf'): ?>
                                            <a href="/view_pdf/<?php echo $value['filename'] ?>" class="btn btn-primary btn-xs" target="tab">View PDF
                                      <span class="fa fa-note"></span>
-                                 <?php else: ?>
-                                   <a href="#" data-param="<?php echo $value['filename'] ?>" class="btn btn-primary btn-xs view_vid">View Video
+                                 <?php elseif($x[1] == 'docx' OR $x[1] == 'doc' OR $x[1] == 'xlsx' OR $x[1] == 'xl'): ?>
+                                   <a href="/download_document/<?php echo $value['filename'] ?>" class="btn btn-primary btn-xs">Download Document
                                      <span class="fa fa-note"></span>
-                                     <?php endif ?>
+                                  <?php else: ?>
+                                    <a href="#" data-param="<?php echo $value['filename'] ?>" class="btn btn-primary btn-xs view_vid">View Video
+                                     <span class="fa fa-note"></span>
+                                  <?php endif ?>
                                   
                                 </td>     
                             </tr>

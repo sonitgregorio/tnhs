@@ -14,6 +14,7 @@
                             <label class="col-sm-3 control-label">Class</label>
                             <div class="col-sm-9" style="padding:0px">
                                 <select class="form-control" id="section" name="section">
+                                    <option>Select Class</option>
                                     <?php foreach ($this->facultymd->get_classes_byid() as $key => $value): ?>
                                         <option value="<?php echo $value['section'] ?>"><?php echo $value['sec'] ?></option>    
                                     <?php endforeach ?>
@@ -130,13 +131,13 @@
                                 <input type="time" class="form-control" name="time_deactivation" required>   
                             </div>
                         </div>
-                        <div class="form-group">
+                       <!--  <div class="form-group">
                             <label class="col-sm-4 control-label">Duration</label>
-                            <div class="col-sm-8">
-                                <input type="text" pattern="[0-2]{1}[0-9]{1}:[0-5]{1}[0-9]{1}" name="duration" class="form-control" placeholder="example (1:30)"/>
+                            <div class="col-sm-8"> -->
+                                <input type="hidden"  name="duration" class="form-control" placeholder="example (1:30)" value="01:00" />
                                 <!-- <input type="time" class="form-control" name="duration" required>    -->
-                            </div>
-                        </div>
+                            <!-- </div>
+                        </div> -->
                         <div class="modal-footer">
                               <button type="submit" class="btn btn-primary">Save</button>
                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

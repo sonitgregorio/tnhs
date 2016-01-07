@@ -44,7 +44,8 @@
 			$('.face').click(function(){
 				x= $(this).data('param');
 				$.post("/faculty/select_data", {x}, function(data){
-					$('.faculty_reg').html(data);
+					// alert(data);
+					 $('.faculty_reg').html(data);
 				});
 			});
 

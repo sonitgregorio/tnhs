@@ -77,6 +77,7 @@ $route['grade_book']							= 'faculty/grade_book';
 $route['view_exam/(:any)']						= 'faculty/view_exam/$1';
 $route['view_student_score/(:any)']				= 'faculty/view_student_score/$1';
 
+
 //Examination Routes
 $route['examination']							= 'faculty/examination';
 $route['insert_exam']							= 'faculty/insert_exam';
@@ -112,6 +113,7 @@ $route['examination_checking/(:any)/(:any)']	= 'student/take_exam/$1/$2';
 $route['student_class']							= 'student/student_class';
 $route['view_lessons/(:any)']					= 'student/view_lessons/$1';
 $route['view_pdf/(:any)']						= 'student/view_pdf/$1';
+$route['grade_bookS']							= 'student/grade_book';
 
 
 //Lessons 
@@ -120,6 +122,7 @@ $route['upload_lessons']						= 'lessons/upload_lessons';
 $route['delete_lessons/(:any)']					= 'lessons/delete_lessons/$1';
 $route['logout']								= 'main/logout';
 $route['activate_exams/(:any)']					= 'faculty/activate_examination/$1';
+$route['delete_sch/(:any)']						= 'faculty/delete_sch/$1';
 
 //Ranking
 $route['view_rank/(:any)']						= 'faculty/view_ranking/$1';
@@ -130,3 +133,4 @@ $route['deactivate/(:any)']						= 'faculty/deactivate/$1';
 $route['list_of_student/(:any)']				= 'faculty/list_stud__exam/$1';
 $route['stud_deactivate/(:any)/(:any)']			= 'faculty/stud_deactivate/$1/$2';
 $route['reactivate_stud_exam']					= 'faculty/reactivate_stud_exam';
+$route['download_document/(:any)']				= 'faculty/download_document/$1';

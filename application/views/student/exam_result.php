@@ -20,14 +20,19 @@
                       <label class="form-control"><?php echo $points ?></label>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Passing</label>
+                  <div class="col-sm-3">
+                      <label class="form-control"><?php echo $passing ?></label>
+                  </div>
+                </div>
                  <div class="form-group">
                   <label class="col-sm-2 control-label">Status</label>
                   <div class="col-sm-3">
-                      
                       <?php 
-                        $stats = $sumpoints * .6;
-
-                        if ($points < $stats) {
+                       $des = $passing / 100;
+                        $stats = $sumpoints * $des;
+                        if ($passing < $sumpoints) {
                           $f=  "Failed";
                         } else {
                           $f ="Passed";

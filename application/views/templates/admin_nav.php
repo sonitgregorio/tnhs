@@ -151,6 +151,8 @@
             </li> -->
             <li class="<?php echo $param == 'myclass' ? 'active' : '' ?>"><a href="/student_class"><span class="fa fa-thumbs-up"></span>Module</a></li>
             <li class="<?php echo $param == 'student_examination' ? 'active' : '' ?>"><a href="/student_examination"><span class="fa fa-outdent"></span> Examinations</a></li>
+             <li class="<?php echo $param == 'grade_book' ? 'active' : '' ?>"><a href="/grade_bookS"><span class="fa fa-outdent"></span> Grade Book</a></li>
+    
         </ul>
     <?php endif ?>
    

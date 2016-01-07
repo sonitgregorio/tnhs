@@ -1,5 +1,6 @@
 <?php echo $this->session->flashdata('message') ?>
 <?php 
+   
     if(!isset($firstname))
     {
 
@@ -14,8 +15,7 @@
         $username = ''; 
         $password = '';
         $sid = '';
-    }
-    
+    }    
 
  ?>
  <form class="form-horizontal fac_submits" method="post" action="/insert_fac" onsubmit="return false">

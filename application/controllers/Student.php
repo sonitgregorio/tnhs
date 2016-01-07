@@ -227,7 +227,10 @@
 
 
 
+			$get_passing = $this->db->query("SELECT passing FROM tbl_exam WHERE id = $id")->row_array();
 
+
+			$data2['passing'] = $get_passing['passing'];
 
 
 			$this->db->insert('tbl_scores', $data);
@@ -244,6 +247,17 @@
 			$this->load->view('templates/header');
 			$this->load->view('templates/admin_nav', $data);
 			$this->load->view('student/exam_result', $data2);	
+			$this->load->view('templates/footer');
+		}
+
+
+		function grade_book()
+		{
+			$data['param'] = 'grade_book';
+			$this->load->model('studentmd');
+			$this->load->view('templates/header');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('student/grade_book');	
 			$this->load->view('templates/footer');
 		}
 	}
