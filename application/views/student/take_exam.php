@@ -91,7 +91,7 @@
 				</div>
 			 <?php endforeach ?>
 				<div class="col-md-12"  style"margin-top:30px">
-					<a href="/checked_ans/<?php echo $qid ?>" class="btn btn-primary pull-right">Save</a>
+					<a href="/checked_ans/<?php echo $qid ?>" class="btn btn-primary pull-right">SUBMIT</a>
 			 	</div>
 	</div>
 </div>

@@ -8,6 +8,10 @@
         <div class="panel-body">
            <div class="col-md-12">
               <form class="form-horizontal">
+              <?php 
+                        $des = $passing / 100;
+                        $stats = $sumpoints * $des; 
+                ?>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Total No. of Item</label>
                   <div class="col-sm-3">
@@ -23,16 +27,15 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Passing</label>
                   <div class="col-sm-3">
-                      <label class="form-control"><?php echo $passing ?></label>
+                      <label class="form-control"><?php echo $stats ?></label>
                   </div>
                 </div>
                  <div class="form-group">
                   <label class="col-sm-2 control-label">Status</label>
                   <div class="col-sm-3">
                       <?php 
-                       $des = $passing / 100;
-                        $stats = $sumpoints * $des;
-                        if ($passing < $sumpoints) {
+                       
+                        if ($stats <= $sumpoints) {
                           $f=  "Failed";
                         } else {
                           $f ="Passed";

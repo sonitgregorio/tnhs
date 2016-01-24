@@ -100,7 +100,7 @@
       <form class="form-horizontal" action="/activate_exams" method="post">
                     <input type="hidden" id="examids" name="examid" class="form-control">
                         <div class="form-group">
-                            <label class="col-sm-4 control-label">Passing Score</label>
+                            <label class="col-sm-4 control-label">Passing Percentage</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="score" required>   
                             </div>
