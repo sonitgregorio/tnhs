@@ -134,3 +134,4 @@ $route['list_of_student/(:any)']				= 'faculty/list_stud__exam/$1';
 $route['stud_deactivate/(:any)/(:any)']			= 'faculty/stud_deactivate/$1/$2';
 $route['reactivate_stud_exam']					= 'faculty/reactivate_stud_exam';
 $route['download_document/(:any)']				= 'faculty/download_document/$1';
+$route['account_settings']						= 'main/accountsettings';

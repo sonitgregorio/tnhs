@@ -110,9 +110,9 @@
 
 
       
+        <ul class="nav nav-sidebar">
 
     <?php if ($this->session->userdata('usertype') == 1): ?>
-        <ul class="nav nav-sidebar">
             <!-- <li class="<?php echo $param == 'home' ? 'active' : '' ?>"><a href="/">
                 <span class="fa fa-users"></span>Dashboard</a>
             </li> -->
@@ -123,9 +123,8 @@
             <li><a href="/class"><span class="fa fa-cogs"></span> Year and Section</a></li>
        
             <li class="<?php echo $param == 'year' ? 'active' : '' ?>"><a href="/sch_yr"><span class="fa fa-cogs"></span> School Year</a></li>
-        </ul>
+
      <?php elseif($this->session->userdata('usertype') == 2): ?>
-        <ul class="nav nav-sidebar">
             <!-- <li class="<?php echo $param == 'home' ? 'active' : '' ?>"><a href="/">
                 <span class="fa fa-users"></span>Dashboard</a>
             </li> -->
@@ -133,7 +132,6 @@
             <li class="<?php echo $param == 'lessons' ? 'active' : '' ?>"><a href="/lessons"><span class="fa fa-outdent"></span> Lessons</a></li>
             <li class="<?php echo $param == 'exam' ? 'active' : '' ?>"><a href="/examination"><span class="fa fa-outdent"></span> Examinations</a></li>
             <li class="<?php echo $param == 'grade_book' ? 'active' : '' ?>"><a href="/grade_book"><span class="fa fa-outdent"></span> Grade Book</a></li>
-        </ul>
         <!-- <ul class="nav nav-sidebar">
             <li><a href="/subject"><span class="fa fa-user-secret"></span> Subject</a></li>
             <li><a href="/class"><span class="fa fa-cogs"></span> Year and Section</a></li>
@@ -145,15 +143,16 @@
     <?php endif ?>
 
     <?php if ($this->session->userdata('usertype') == 3): ?>
-        <ul class="nav nav-sidebar">
             <!-- <li class="<?php echo $param == 'home' ? 'active' : '' ?>"><a href="/">
                 <span class="fa fa-users"></span>Dashboard</a>
             </li> -->
             <li class="<?php echo $param == 'myclass' ? 'active' : '' ?>"><a href="/student_class"><span class="fa fa-thumbs-up"></span>Module</a></li>
             <li class="<?php echo $param == 'student_examination' ? 'active' : '' ?>"><a href="/student_examination"><span class="fa fa-outdent"></span> Examinations</a></li>
              <li class="<?php echo $param == 'grade_book' ? 'active' : '' ?>"><a href="/grade_bookS"><span class="fa fa-outdent"></span> Grade Book</a></li>
-    
-        </ul>
+ 
+    <?php else: ?>
+       
     <?php endif ?>
-   
+             <li class="<?php echo $param == 'accountsettings' ? 'active' : '' ?>"><a href="/account_settings"><span class="fa fa-outdent"></span>Account Settings</a></li>
+        </ul>
 </div>
