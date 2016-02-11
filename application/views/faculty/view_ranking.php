@@ -48,12 +48,14 @@
 </nav>
 	<?php 
 		$ranks = $this->facultymd->get_examid($classid);
+		$get_sub = $this->facultymd->get_sub_desc($classid);
 		$counter = 0;
 	 ?>
 	<div class="col-md-8 col-md-offset-2 pages">
 		<div class="col-md-12">
 		 	<center><p style="font-size:12px">CLASS RANKING</p></center>
 		 	<center><p style="font-size:12px">Of</p></center>
+		 	<center><p style="font-size:12px"><?php echo $get_sub ?></p></center>
 		</div>
 
 		<table class="table table-bordered">

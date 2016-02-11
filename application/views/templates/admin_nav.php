@@ -72,9 +72,13 @@
     <div class="nav nav-sidebar">
 
         <a href="{{ url('/profile')}}">
-         
+                
+                <?php if ($this->session->userdata('pics') == ''): ?>
+                    <img src="../assets/images/default.jpg" class="profile-img-tmb">
+                <?php else: ?>
+                    <img src="../assets/images/<?php echo $this->session->userdata('pics') ?>" class="profile-img-tmb">
+                <?php endif ?>
               
-                <img src="../assets/images/default.jpg" class="profile-img-tmb">
 
         </a>
         <div>

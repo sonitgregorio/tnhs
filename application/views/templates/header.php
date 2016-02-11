@@ -17,6 +17,7 @@
     <link href="../assets/css/user.css" rel="stylesheet">
     <link href="../assets/css/admin.css" rel="stylesheet">
     <link href="../assets/css/dashboard.css" rel="stylesheet">
+    <link href="../assets/css/jasny-bootstrap.min.css" rel="stylesheet">
 
 
     <link href="../assets/css/dashboard.css" rel="stylesheet" type="text/css">

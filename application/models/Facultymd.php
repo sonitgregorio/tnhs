@@ -203,4 +203,9 @@
 							  FROM tbl_stud_exam a, tbl_party b 
 							  WHERE a.examid = $id and a.uid = b.id")->result_array();
 		}
+		function get_sub_desc($id)
+		{
+			$x = $this->db->query("SELECT CONCAT(subject_code, ' ', subject_title) as sub FROM tbl_classes, tbl_subject WHERE tbl_classes.id = $id AND tbl_classes.subject = tbl_subject.id")->row_array();
+			return $x['sub'];
+		}
 	} 

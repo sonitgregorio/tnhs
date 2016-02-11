@@ -12,7 +12,28 @@
         <div class="panel-body">
         <div class="col-md-8">
             <?=$this->session->flashdata('message')?>
-            <form class="form-horizontal" method="POST" action="/main/update_users">
+            
+            <form class="form-horizontal" method="POST" action="/main/update_users" enctype="multipart/form-data">
+                 <div class="form-group">
+                    <div class="col-sm-3">
+                        <label>&nbsp;</label>
+                    </div>
+                     <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                            <?php if ($x['picfile'] == ''): ?>
+                                <img src="../assets/images/1.png">
+
+                            <?php else: ?>
+                                <img src="../assets/images/<?= $x['picfile'] ?>">
+                            <?php endif ?>
+                        </div>
+                        <div>
+                          <span class="btn btn-info btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="picture"></span>
+                          <!-- <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> -->
+                        </div>
+                    </div>                     
+                 </div>                   
+
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Firstname</label>
                     <div class="col-sm-9">

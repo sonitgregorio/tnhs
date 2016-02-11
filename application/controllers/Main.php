@@ -40,6 +40,8 @@
 				} else {
 					$this->session->set_userdata('usertype',$x['usertype']);
 					$this->session->set_userdata('uid',$x['uid']);
+					$this->session->set_userdata('pics',$x['picfile']);
+
 					$this->session->set_userdata('ngaran',$x['firstname']/*." ". $x['middlename'] ." ".$x['lastname']*/ );
 					$this->redirectpage();
 				}		
@@ -71,6 +73,7 @@
 		}
 		function update_users()
 		{
+
 			$this->load->model('login');
 			$firstname = $this->input->post('fname');
 			$mname = $this->input->post('mname');
@@ -79,7 +82,22 @@
 			$address = $this->input->post('address');
 
 			$uid = $this->session->userdata('uid');
-			$data = ['firstname' => $firstname, 'middlename' => $mname, 'lastname' => $lname, 'dob' => $dob, 'address' => $address];
+
+
+
+			$config['upload_path']          = './assets/images/';
+	        $config['allowed_types']        = 'gif|jpg|png';
+	        $config['encrypt_name']         = TRUE;
+	        $this->load->library('upload', $config);
+	        if ( ! $this->upload->do_upload('picture'))
+	        {
+				$data = ['firstname' => $firstname, 'middlename' => $mname, 'lastname' => $lname, 'dob' => $dob, 'address' => $address];
+	        }else{
+				$data = ['firstname' => $firstname, 'middlename' => $mname, 'lastname' => $lname, 'dob' => $dob, 'address' => $address, 'picfile' => $this->upload->data('file_name')];
+	        	$this->session->set_userdata('pics',$this->upload->data('file_name'));
+	        }
+
+
 			$this->login->update_data($data, $uid);
 			$this->session->set_flashdata('message',$this->successMessage().'Successfully Updated! </div>');
 
@@ -102,7 +120,7 @@
 
 			}else{
 				$this->session->set_flashdata('changepass',$this->successMessage().'Password Successfully Updated! </div>');
-				$this->db->where('party', $this->session->flashdata('uid'));
+				$this->db->where('party', $this->session->userdata('uid'));
 				$this->db->update('tbl_users', array('password' => $npass));
 			}
 			redirect('/account_settings');

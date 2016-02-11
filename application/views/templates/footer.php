@@ -2,7 +2,7 @@
 <!-- <script src="../assets/js/moment.min.js"></script> -->
 <script src="../assets/js/bootstrap.min.js"></script>
 <script src="../assets/js/jquery.dataTables.min.js"></script>
-<!-- <script src="../assets/js/user.js"></script> -->
+<script src="../assets/js/jasny-bootstrap.min.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
