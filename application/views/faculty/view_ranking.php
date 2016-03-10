@@ -50,6 +50,31 @@
 		$ranks = $this->facultymd->get_examid($classid);
 		$get_sub = $this->facultymd->get_sub_desc($classid);
 		$counter = 0;
+
+		$po = 0;
+		$student = 0;
+		$mean = 0;
+		$mps = 0;
+		$s = 0;
+		$get_scores = $this->db->query("SELECT * FROM tbl_exam WHERE classid = $classid")->result_array();
+
+		foreach ($get_scores as $key => $value) {
+			$i = $value['id'];
+			$get_sto = $this->db->query("SELECT * FROM tbl_stud_exam WHERE examid = $i")->num_rows();
+			$get_s = $this->db->query("SELECT SUM(points) as poin FROM tbl_question WHERE examid = '$i'")->row_array();
+			$get_t = $this->db->query("SELECT SUM(points) as poin FROM tbl_scores WHERE examid = '$i'")->row_array();
+			$po += $get_t['poin'];
+			$s += $get_s['poin'];
+			$student += $get_sto;
+			
+		}
+		if ($student != 0) {
+				$mean = $po / $student;
+				$mps = $mean /$s * 100;
+			}
+
+
+
 	 ?>
 	<div class="col-md-8 col-md-offset-2 pages">
 		<div class="col-md-12">
@@ -74,6 +99,18 @@
 				<?php endforeach ?>
 			</tbody>
 		</table>
+
+		<div>
+			Mean : <?php echo $mean ?>
+			<br />
+			MPS : <?php echo $mps ?>
+			<br />
+			Signed By:<br /><br />
+			<u><?php 
+				$x = $this->facultymd->get_name($this->session->userdata('uid'));
+				echo strtoupper($x['na']);
+			 ?></u><br />
+		</div>
 	</div>
 </body>
 	<script src="../assets/js/jquery.min.js"></script>

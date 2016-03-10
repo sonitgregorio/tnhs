@@ -3,37 +3,27 @@
 	<div class="panel panel-default">
 		<div class="header_styles" style="padding:15px">
 			Year And Section
-	
 		</div>
-
-
 <?php 
 
 if (!isset($id)) {
       $year = '';
         $section = '';
-} else {
 }
-
-
-
- ?>
-
-
-       
-
-
+?>
 		<div class="panel-body">
             <div class="col-md-12 ">
                 <form class="form-horizontal" method="post" action="/insert_class">
                        <div class="form-group col-md-5" style="padding:0px">
-                        <label class="col-sm-3 control-label" for="exampleInputEmail1">Year Level</label>
+                        <label class="col-sm-3 control-label" for="exampleInputEmail1">Grade</label>
                         <div class="col-sm-9">
                             <select name="year" class="form-control">
-                                <option <?php echo $year == 'First Year' ? 'selected' : '' ?>>First Year</option>
-                                <option <?php echo $year == 'Second Year' ? 'selected' : '' ?>>Second Year</option>
-                                <option <?php echo $year == 'Third Year' ? 'selected' : '' ?>>Third Year</option>
-                                <option <?php echo $year == 'Fourth Year' ? 'selected' : '' ?>>Fourth Year</option>
+                                <option <?php echo $year == 'Grade 7' ? 'selected' : '' ?>>Grade 7</option>
+                                <option <?php echo $year == 'Grade 8' ? 'selected' : '' ?>>Grade 8</option>
+                                <option <?php echo $year == 'Grade 9' ? 'selected' : '' ?>>Grade 9</option>
+                                <option <?php echo $year == 'Grade 10' ? 'selected' : '' ?>>Grade 10</option>
+                                <option <?php echo $year == 'Grade 11' ? 'selected' : '' ?>>Grade 11</option>
+                                <option <?php echo $year == 'Grade 12' ? 'selected' : '' ?>>Grade 12</option>
                             </select>
                         </div>
                     </div>
@@ -43,16 +33,11 @@ if (!isset($id)) {
                              <input value  ="<?php echo $section ?>"name="section" type="text" class="form-control" required style="padding:0px">
                         </div>
                     </div>
-
                     <div class="col-md-3">
                      <button type="Submit" class="btn btn-primary">Save</button>
-
                     </div>
             </form>
-
-
             </div>
-            
 			<table class="table table-bordered table-striped">
 				<thead class="header_styles">
 					<th>Year Level</th>

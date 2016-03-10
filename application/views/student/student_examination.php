@@ -15,6 +15,7 @@ date_default_timezone_set("Asia/Manila");
                     <th>Description</th>
                     <th>Subject</th>
                     <th>section</th>
+                    <th>Deactivation Date</th>
                     <th>Status</th>
                     <th>Action</th>
                 </thead>
@@ -24,6 +25,7 @@ date_default_timezone_set("Asia/Manila");
                             <td><?php echo $value['description'] ?></td>
                             <td><?php echo $value['subject_title']  ?></td>
                             <td><?php echo $value['sec'] ?></td>
+                            <td><?= $value['date_deactivation']?></td>
                             <td><?php 
 
                             

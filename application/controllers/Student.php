@@ -27,6 +27,7 @@
 		function insert_stud()
 		{
 
+			$this->studentmd->insert_logs('inserted student');
 
 			$this->load->model('studentmd');
 			$lastinsert = $this->studentmd->get_last() + 1;
@@ -44,6 +45,7 @@
 			$password = $this->input->post('password');
 			$cpassword = $this->input->post('cpassword');
 			$usertype = $this->input->post('usertype');
+			$idno = $this->input->post('idno');
 
 			//For ID number of the student
 			for ($i = strlen($lastinsert); $i < 5; $i++) { 
@@ -62,7 +64,8 @@
 						   'year_section' => $year_section,
 						   'username' => $username,
 						   'password' => $password,
-						   'sid' => '');
+						   'sid' => '',
+						   'idno' => $idno);
 
 			if($cpassword != $password){
 				$this->session->set_flashdata('message', $this->faildemessage() . 'Invalid Confirm Password</div>');
@@ -80,19 +83,28 @@
 						   'address' => $address,
 						   'year_section' => $year_section,
 						   'usertype' => $usertype,
-						   'idno' => $dates);
+						   'idno' => $idno);
 
 
 				if ($this->input->post('sid') == '') 
 				{
-					$this->session->set_flashdata('message', $this->successMessage() . 'Student Added</div>');
 
-					$x = $this->studentmd->insert_student($party);
-					$user = array('username' => $username,
-								  'password' => $password,
-								  'party' => $x);
-					$this->studentmd->insert_users($user);
-					$xz = 1;
+					$x = $this->db->query("SELECT * FROM tbl_party WHERE firstname = '$firstname' and lastname = '$lname'")->num_rows();
+					if ($x > 0) {
+						$xz = 4;
+					}else{
+						$this->session->set_flashdata('message', $this->successMessage() . 'Student Added</div>');
+
+						$x = $this->studentmd->insert_student($party);
+						$user = array('username' => $username,
+									  'password' => $password,
+									  'party' => $x);
+						$this->studentmd->insert_users($user);
+						$xz = 1;	
+					}
+
+					echo $xz;
+					
 				}
 				else
 				{
@@ -109,14 +121,17 @@
 					$this->session->set_flashdata('message', $this->successMessage() . 'Student Updated</div>');
 					$this->studentmd->update_student($this->input->post('sid'), $party2);
 					$xz = 1;
+
+					echo $xz;
 				}
-			echo $xz;
 			}
 
 		}
 
 		function delete_stud($id)
 		{
+			$this->studentmd->insert_logs('Deeleted Student');
+
 			$this->session->set_flashdata('message', $this->successMessage() . 'Student Deleted.</div>');
 			$this->load->model('studentmd');
 			$this->studentmd->delete_stud($id);
@@ -142,7 +157,14 @@
 		}
 		function take_exam($id)
 		{
+			$this->studentmd->insert_logs('Taken Exam');
 
+			date_default_timezone_set('Asia/Manila');
+			$time = date('h:i:s');
+			$uid = $this->session->userdata('uid');
+			$this->db->where('uid', $uid);
+			$this->db->where('examid', $id);
+			$this->db->update('tbl_stud_exam', array('date_taken' => date('Y-m-d'), 'time_taken' => $time));
 			$data1['qid']=$id;
 			$data['param'] = 'student_examination';
 			$this->load->model('studentmd');
@@ -151,6 +173,7 @@
 			$this->load->view('templates/admin_nav', $data);
 			$this->load->view('student/take_exam',$data1);
 			$this->load->view('templates/footer');
+			$this->load->view('templates/timer');
 		}
 		function submit_score($id,$id1)
 		{
@@ -260,4 +283,5 @@
 			$this->load->view('student/grade_book');	
 			$this->load->view('templates/footer');
 		}
+		
 	}

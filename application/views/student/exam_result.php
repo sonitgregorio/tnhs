@@ -18,12 +18,6 @@
                     <label class="form-control"><?php echo $sumpoints ?></label>
                   </div>
                 </div>
-                 <div class="form-group">
-                  <label class="col-sm-2 control-label">Score</label>
-                  <div class="col-sm-3">
-                      <label class="form-control"><?php echo $points ?></label>
-                  </div>
-                </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Passing</label>
                   <div class="col-sm-3">
@@ -31,11 +25,18 @@
                   </div>
                 </div>
                  <div class="form-group">
+                  <label class="col-sm-2 control-label">Score</label>
+                  <div class="col-sm-3">
+                      <label class="form-control"><?php echo $points ?></label>
+                  </div>
+                </div>
+                
+                 <div class="form-group">
                   <label class="col-sm-2 control-label">Status</label>
                   <div class="col-sm-3">
                       <?php 
                        
-                        if ($stats <= $sumpoints) {
+                        if ($stats >= $points) {
                           $f=  "Failed";
                         } else {
                           $f ="Passed";

@@ -12,6 +12,8 @@
 				<thead class="header_styles">
 					<th>Subject</th>
 					<th>Score</th>
+					<th>Date Taken</th>
+					<th>Time Taken</th>
                     <th>Status</th>
 				</thead>
 				<tbody>
@@ -20,9 +22,12 @@
 
 					 ?>
                 <?php foreach ($this->studentmd->get_gradebook($this->session->userdata('uid')) as $key => $value): ?>
+                    <?php $x = $this->studentmd->get_date_time($value['ex'], $this->session->userdata('uid')) ?>
                     <tr>
                         <td><?php echo $value['subject_title'] ?></td>
                        	<td><?php echo $value['points'] ?></td>
+                       	<td><?= $x['date_taken']?></td>
+                       	<td><?= $x['time_taken']?></td>
                          <td>
                          	<?php 
 

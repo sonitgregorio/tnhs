@@ -131,13 +131,13 @@
                                 <input type="time" class="form-control" name="time_deactivation" required>   
                             </div>
                         </div>
-                       <!--  <div class="form-group">
+                         <div class="form-group">
                             <label class="col-sm-4 control-label">Duration</label>
                             <div class="col-sm-8"> -->
                                 <input type="hidden"  name="duration" class="form-control" placeholder="example (1:30)" value="01:00" />
                                 <!-- <input type="time" class="form-control" name="duration" required>    -->
-                            <!-- </div>
-                        </div> -->
+                             </div>
+                        </div> 
                         <div class="modal-footer">
                               <button type="submit" class="btn btn-primary">Save</button>
                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

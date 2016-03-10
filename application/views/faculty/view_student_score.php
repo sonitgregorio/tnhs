@@ -12,23 +12,28 @@
 				<thead class="header_styles">
 					<th>Name</th>
 					<th>Score</th>
+					<th>Date Taken</th>
+					<th>Time Taken</th>
                     <th>Status</th>
 				</thead>
 				<tbody>
 					<?php 
-							$sum = $this->facultymd->select_sum_scores($eid);
+
+							$getpass = $this->db->query("SELECT * FROM tbl_exam WHERE id = $eid")->row_array();
 							
-
-							$sum1 = $sum['points'] * 0.6;
-
-
+							$p = $getpass['passing'];
 					 ?>
                 <?php foreach ($this->facultymd->get_scores($eid) as $key => $value): ?>
+                	<?php 
+                		$d = $this->facultymd->get_date_time($eid, $value['party']);
+                	?>
                     <tr>
                         <td><?php echo $value['firstname']." ".$value['middlename']." ".$value['lastname'] ?></td>
                        	<td><?php echo $value['points'] ?></td>
+                       	<td><?= $d['date_taken'] ?></td>
+                       	<td><?= $d['time_taken'] ?></td>
                          <td>
-                         	<?php if ($value['points'] < $sum1): ?>
+                         	<?php if ($value['points'] < $p): ?>
                          		Failed
                          	<?php else: ?>
                          		Passed

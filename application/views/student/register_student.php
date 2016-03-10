@@ -14,6 +14,7 @@
         $username = ''; 
         $password = '';
         $sid = '';
+        $idno='';
     }
 
  ?>
@@ -21,8 +22,17 @@
         <input type="hidden" value="3" name="usertype">
         <input type="hidden" value="<?php echo $sid ?>" name="sid">
        	<div class="row">
+            <div class="err">
+                
+            </div>
             <div class="col-md-12">
-            			<div class="form-group">
+            		<div class="form-group">
+                        <label class="col-sm-4 control-label">ID No.</label>
+                        <div class="col-sm-8">
+                            <input name="idno" type="text" class="form-control"  value="<?php echo $idno ?>"required>
+                        </div>
+                    </div>
+                    <div class="form-group">
             			<label class="col-sm-4 control-label">First Name</label>
             			<div class="col-sm-8">
 	                    	<input name="fname" type="text" class="form-control"  value="<?php echo $firstname ?>"required>

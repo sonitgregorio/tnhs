@@ -65,6 +65,7 @@
 		{
 
 
+			$this->studentmd->insert_logs('Inserted Faculty');
 			$this->load->model('studentmd');
 			$lastinsert = $this->studentmd->get_last() + 1;
 			$l = $lastinsert;
@@ -151,6 +152,8 @@
 		}
 		function delete_fac($id)
 		{
+
+			$this->studentmd->insert_logs('Deleted Faculty');
 			$this->session->set_flashdata('message', $this->successMessage() . 'Instructor Deleted</div>');
 			$this->db->where('id', $id);
 			$this->db->delete('tbl_party');
@@ -167,6 +170,8 @@
 		}
 		function addclass()
 		{
+
+			$this->studentmd->insert_logs('Class Added');
 			$this->load->model('facultymd');
 			$section = $this->input->post('InsSec');
 			$newclass = array('uid' => $this->session->userdata('uid'), 
@@ -183,6 +188,8 @@
 		}
 		function delete_classes($id)
 		{
+
+			$this->studentmd->insert_logs('Class Deleted');
 			$this->db->where('id', $id);
 			$this->db->delete('tbl_classes');
 			redirect('/faculty_class');
@@ -199,6 +206,8 @@
 		}
 		function insert_students()
 		{
+
+			$this->studentmd->insert_logs('Inserted Student');
 			$data = array('classid' => $this->input->post('classid'),
 						  'partyid' =>$this->input->post('stud_id'));
 			$this->db->insert('tbl_student', $data);
@@ -207,6 +216,8 @@
 		}
 		function delet_stud_class($id, $classid)
 		{
+
+			$this->studentmd->insert_logs('Deleted student class');
 			$this->db->where('id', $id);
 			$this->db->delete('tbl_student');
 			redirect('/view_stud/'.$classid);
@@ -232,6 +243,8 @@
 		}
 		function insert_exam()
 		{
+
+			$this->studentmd->insert_logs('Exam Inserted');
 			$this->load->model('facultymd');
 			$classid = $this->facultymd->get_classid($this->input->post('section'), $this->input->post('subject'));
 
@@ -255,6 +268,8 @@
 		}
 		function insert_question()
 		{
+
+			$this->studentmd->insert_logs('Inserted Question');
 
 			$this->load->model('facultymd');
 
@@ -292,6 +307,7 @@
 		function activate_exams()
 		{
 
+			$this->studentmd->insert_logs('Activated Exam');
 			$this->load->model('facultymd');
 			$d_activation = $this->input->post('date_activation');
 			$d_deactivation = $this->input->post('date_deactivate');
@@ -326,6 +342,8 @@
 		}
 		function insert_insert_answers()
 		{
+
+			$this->studentmd->insert_logs('Answers Inserted');
 			$answer = $this->input->post('ans');
 			$qid = $this->input->post('qid');
 			$uid = $this->session->userdata('uid');
@@ -386,6 +404,8 @@
 		}
 		function reactivate_stud_exam()
 		{
+
+			$this->studentmd->insert_logs('Exam Reactivated');
 			$this->load->model('facultymd');
 			$d_activation = $this->input->post('date_activation');
 			$d_deactivation = $this->input->post('date_deactivate');
@@ -407,6 +427,8 @@
 		}
 		function delete_sch($id)
 		{
+
+			$this->studentmd->insert_logs('Deleted SY');
 			$this->db->where('id', $id);
 			$this->db->delete('tbl_year');
 			redirect('/sch_yr');

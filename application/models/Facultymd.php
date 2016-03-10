@@ -141,7 +141,7 @@
 		}
 		function get_scores($id)
 		{
-			return $this->db->query("SELECT * FROM tbl_scores,tbl_exam,tbl_party WHERE tbl_scores.examid='$id' AND tbl_exam.id='$id' AND tbl_scores.uid=tbl_party.id")->result_array();
+			return $this->db->query("SELECT *, tbl_party.id as party FROM tbl_scores,tbl_exam,tbl_party WHERE tbl_scores.examid='$id' AND tbl_exam.id='$id' AND tbl_scores.uid=tbl_party.id ORDER BY tbl_party.lastname")->result_array();
 		}
 		function select_sum_scores($id)
 		{
@@ -155,7 +155,7 @@
 									AND tbl_scores.uid=tbl_party.id 
 									AND tbl_exam.classid = $classid
 									GROUP by tbl_scores.uid
-									ORDER by p DESC")->result_array();
+									ORDER by tbl_party.lastname, p DESC")->result_array();
 		}
 		function up_exam($data, $examid)
 		{
@@ -199,7 +199,7 @@
 		}
 		function getstudents($id)
 		{
-			return $this->db->query("SELECT a.status, b.idno, concat(b.firstname, ' ' , b.middlename, ' ' ,b.lastname) as names, b.id, a.examid 
+			return $this->db->query("SELECT a.time_taken, a.date_taken, a.status, b.idno, concat(b.firstname, ' ' , b.middlename, ' ' ,b.lastname) as names, b.id, a.examid 
 							  FROM tbl_stud_exam a, tbl_party b 
 							  WHERE a.examid = $id and a.uid = b.id")->result_array();
 		}
@@ -207,5 +207,13 @@
 		{
 			$x = $this->db->query("SELECT CONCAT(subject_code, ' ', subject_title) as sub FROM tbl_classes, tbl_subject WHERE tbl_classes.id = $id AND tbl_classes.subject = tbl_subject.id")->row_array();
 			return $x['sub'];
+		}
+		function get_date_time($examid, $party)
+		{
+			return $this->db->query("SELECT date_taken, time_taken FROM tbl_stud_exam WHERE examid = $examid AND uid = $party")->row_array();
+		}
+		function get_name($id)
+		{
+			return $this->db->query("SELECT CONCAT(firstname, ' ',middlename, ' ', lastname ) as na FROM tbl_party WHERE id = '$id'")->row_array();
 		}
 	} 

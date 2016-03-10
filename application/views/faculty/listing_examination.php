@@ -6,6 +6,8 @@
 			<thead class="navbar navbar-inverse" style="color:white;text-align:center">
 				<th style="text-align:center">No.</th>
 				<th style="text-align:center">Name.</th>
+        <th style="text-align:center">Date Taken</th>
+        <th style="text-align:center">Time Taken</th>
 				<th style="text-align:center">Status.</th>
 				<th style="text-align:center">Action</th>
 			</thead>
@@ -14,6 +16,8 @@
 				<tr>
 					<td><?php echo $value['idno'] ?></td>
 					<td><?php echo $value['names'] ?></td>
+          <td><?= $value['date_taken']?></td>
+          <td><?= $value['time_taken']?></td>
 					<td>
 					<?php 
 						if ($value['status'] == 1) {

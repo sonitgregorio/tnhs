@@ -54,7 +54,7 @@
 		}
 		function get_kung_mayada_exam($id)
 		{
-			return $this->db->query("SELECT a.status, a.examid, e.description, b.subject_title, concat(c.year, ' - ', c.section) as sec, a.status, a.date_activation, a.date_deactivation, a.time_start, a.time_end   
+			return $this->db->query("SELECT a.date_deactivation, a.status, a.examid, e.description, b.subject_title, concat(c.year, ' - ', c.section) as sec, a.status, a.date_activation, a.date_deactivation, a.time_start, a.time_end   
 									 FROM `tbl_stud_exam` a, tbl_subject b, tbl_yearsection c, tbl_classes d, tbl_exam e  
 									 WHERE a.uid = $id
 									 AND a.examid = e.id 
@@ -95,6 +95,21 @@
 		}
 		function get_gradebook($id)
 		{
-			return $this->db->query("SELECT tbl_scores.points,tbl_exam.passing,tbl_subject.subject_title FROM tbl_scores,tbl_exam,tbl_classes,tbl_subject WHERE tbl_exam.id=tbl_scores.examid AND tbl_scores.uid=$id AND tbl_exam.status=1 AND tbl_classes.subject=tbl_subject.id AND tbl_exam.classid=tbl_classes.id")->result_array();
+			return $this->db->query("SELECT tbl_exam.id as ex, tbl_scores.points,tbl_exam.passing,tbl_subject.subject_title FROM tbl_scores,tbl_exam,tbl_classes,tbl_subject WHERE tbl_exam.id=tbl_scores.examid AND tbl_scores.uid=$id AND tbl_exam.status=1 AND tbl_classes.subject=tbl_subject.id AND tbl_exam.classid=tbl_classes.id")->result_array();
 		}
+		function get_date_time($examid, $party)
+		{
+			return $this->db->query("SELECT date_taken, time_taken FROM tbl_stud_exam WHERE examid = $examid AND uid = $party")->row_array();
+		}
+		function insert_logs($activity)
+	    {
+			date_default_timezone_set('Asia/Manila');
+	    	
+	        $time = date('h:i:s');
+	        $date = date('Y-m-d');
+	        $name = $this->session->userdata('names');
+	        $data = array('names' => $name, 'activity' => $activity, 'date_log' => $date, 'time_log' => $time);
+
+	        $this->db->insert('tbl_logs', $data);
+	    }
 	}

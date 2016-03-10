@@ -23,6 +23,8 @@
 		}
 		function upload_lessons()
 		{
+			$this->studentmd->insert_logs('Uploaded Lessons');
+
 			$config['upload_path']          = './assets/lessons/';
 	        $config['allowed_types']        = 'pdf|mp4|3gp|docx|doc|xlsx|xl';
 	        $config['encrypt_name']         =  FALSE;
@@ -49,6 +51,8 @@
 		}
 		function delete_lessons($id)
 		{
+			$this->studentmd->insert_logs('Deleted Lessons');
+
 			$this->session->set_flashdata('message', $this->faildemessage() . 'Lessons Deleted</div>');
 			$this->db->where('id', $id);
 			$this->db->delete('tbl_lessons');

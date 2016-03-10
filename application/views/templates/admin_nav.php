@@ -127,7 +127,8 @@
             <li><a href="/class"><span class="fa fa-cogs"></span> Year and Section</a></li>
        
             <li class="<?php echo $param == 'year' ? 'active' : '' ?>"><a href="/sch_yr"><span class="fa fa-cogs"></span> School Year</a></li>
-
+            <li class="<?php echo $param == 'logs' ? 'active' : '' ?>"><a href="/logs"><span class="fa fa-outdent"></span>Logs</a></li>
+            
      <?php elseif($this->session->userdata('usertype') == 2): ?>
             <!-- <li class="<?php echo $param == 'home' ? 'active' : '' ?>"><a href="/">
                 <span class="fa fa-users"></span>Dashboard</a>
@@ -136,6 +137,7 @@
             <li class="<?php echo $param == 'lessons' ? 'active' : '' ?>"><a href="/lessons"><span class="fa fa-outdent"></span> Lessons</a></li>
             <li class="<?php echo $param == 'exam' ? 'active' : '' ?>"><a href="/examination"><span class="fa fa-outdent"></span> Examinations</a></li>
             <li class="<?php echo $param == 'grade_book' ? 'active' : '' ?>"><a href="/grade_book"><span class="fa fa-outdent"></span> Grade Book</a></li>
+            
         <!-- <ul class="nav nav-sidebar">
             <li><a href="/subject"><span class="fa fa-user-secret"></span> Subject</a></li>
             <li><a href="/class"><span class="fa fa-cogs"></span> Year and Section</a></li>

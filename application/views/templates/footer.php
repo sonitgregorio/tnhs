@@ -1,8 +1,8 @@
 <script src="../assets/js/jquery.min.js"></script>
-<!-- <script src="../assets/js/moment.min.js"></script> -->
 <script src="../assets/js/bootstrap.min.js"></script>
 <script src="../assets/js/jquery.dataTables.min.js"></script>
 <script src="../assets/js/jasny-bootstrap.min.js"></script>
+<script src="../assets/js/jquery.countdownTimer.min.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -11,13 +11,16 @@
 
          $.post("/student/insert_stud", $(this).serialize(), function(data){
          	
-         	if (data > 0) 
+         	if (data == 1) 
          	{
          		document.location = '/student';
          	}
-         	else
+         	else if (data == 4)
          	{
-         		 $('.reg_student').html(data);
+         		// alert(data);
+         		$('.err').html('<div class="alert alert-danger">Account Already Exist!<div>');	 
+         	}else{
+         		$('.reg_student').html(data);
          	}
          });   
 
@@ -107,8 +110,6 @@
 				$('#vids').attr('src', $path);
 				$('#view_videos').modal('show');
 			});
-			
-
 		});
 
 

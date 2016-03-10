@@ -1,12 +1,22 @@
-<div class="col-md-2"></div>
+<div class="col-md-2 loads"></div>
 <div class="col-md-10">
 	<div class="panel panel-default">
 		<div class=" header_styles" style="padding:15px" >
-			Examination      
+
 			<?php 
-			 $qid;
-			 //$rand=rand(0,3);
-			 ?>      	
+				$id = $this->session->userdata('uid');
+				$x = $this->db->query("SELECT time_duration FROM tbl_stud_exam WHERE examid = $qid AND uid = $id")->row_array();
+				$time = $x['time_duration'];
+				$ext = explode(':', $time);
+
+				$h = $ext[0];
+				$m = $ext[1];
+			 ?> 
+			<input type="hidden" name="h" value="<?php echo $h ?>">
+			<input type="hidden" name="m" value="<?php echo $m ?>">
+			Examination 
+				<div id="countdowntimer" style="border:none" class="pull-right" ><span id="hm_timer" style="padding:5px;border:none;margin-bottom:10px"><span></div>
+
 		</div>
 		<div class="panel-body">
             <?php echo $this->session->flashdata('message') ?>
@@ -23,6 +33,7 @@
 					</p>
 				</div>
 				<div class="col-md-12" >
+
 					<?php 
 							if ($rand==0) { ?>	
 							<div class="col-md-12 radio">

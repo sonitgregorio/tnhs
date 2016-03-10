@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#about">
+                    <a href="/about">
                         <span class="fa fa-history"></span>
                         About Us
                     </a>

@@ -20,6 +20,8 @@
 		//---------------------Class-------------------------
 		function insert_class()
 		{
+
+			$this->studentmd->insert_logs('Inserted Class');
 			$this->load->model('adminmd');
 			$data=array('year'=>$this->input->post('year'),
                     'section'=>$this->input->post('section')                   
@@ -51,6 +53,8 @@
 		}
 		function insert_subject()
 		{
+
+			$this->studentmd->insert_logs('Inserted Subject');
 			$this->load->model('adminmd');
 			$data=array('year'=>$this->input->post('year'),
 				'unit'=>$this->input->post('unit'),
@@ -64,6 +68,8 @@
 		}
 		function delete_subject($id)
 		{
+
+			$this->studentmd->insert_logs('Deleted subject');
 			$this->load->model('adminmd');
 			 $this->adminmd->delete_subject($id);
                redirect('/subject');
@@ -86,6 +92,8 @@
        }
        function insert_sch()
        {	
+
+			$this->studentmd->insert_logs('Inserted S.Y');
        		$this->load->model('adminmd');
        		$data = array('sch_yr' => $this->input->post('sch'));
        		$this->adminmd->insert_sch($data);

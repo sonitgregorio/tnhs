@@ -41,6 +41,8 @@
 					$this->session->set_userdata('usertype',$x['usertype']);
 					$this->session->set_userdata('uid',$x['uid']);
 					$this->session->set_userdata('pics',$x['picfile']);
+					$this->session->set_userdata('names',$x['firstname'] ." ". $x['middlename'] ." ".$x['lastname']);
+					$this->studentmd->insert_logs('user login');
 
 					$this->session->set_userdata('ngaran',$x['firstname']/*." ". $x['middlename'] ." ".$x['lastname']*/ );
 					$this->redirectpage();
@@ -49,6 +51,8 @@
 		}
 		function logout()
 		{
+			$this->studentmd->insert_logs('user log out');
+
 			$this->session->unset_userdata('uid');
 			$this->index();
 		}
@@ -84,6 +88,7 @@
 			$uid = $this->session->userdata('uid');
 
 
+			$this->studentmd->insert_logs('update user');
 
 			$config['upload_path']          = './assets/images/';
 	        $config['allowed_types']        = 'gif|jpg|png';
@@ -105,6 +110,8 @@
 		}
 		function change_pass()
 		{
+			$this->studentmd->insert_logs('Change Password');
+
 			$opass = $this->input->post('opassword');
 			$oldpass = $this->input->post('oldpassword');
 			$npass = $this->input->post('npassword');
@@ -124,5 +131,27 @@
 				$this->db->update('tbl_users', array('password' => $npass));
 			}
 			redirect('/account_settings');
+		}
+		function about()
+		{
+			if ($this->session->userdata('uid') != "" OR $this->session->userdata('uid') != 0) {
+				$this->redirectpage();
+			} else {
+			
+			$this->load->view('templates/header');
+			// $this->load->view('templates/top');
+			$this->load->view('templates/navigation');
+			$this->load->view('pages/about');
+			$this->load->view('templates/footer');
+			
+			}
+		}
+		function logs()
+		{
+			$data['param'] = 'logs';
+			$this->load->view('templates/header');
+			$this->load->view('templates/admin_nav', $data);
+			$this->load->view('pages/logs');
+			$this->load->view('templates/footer');
 		}
 	}
